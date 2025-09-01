@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- META BÁSICO -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Relojería ZH | Catálogo Completo de Relojes CAT</title>
+  <meta name="description" content="Catálogo completo de relojes CAT en Relojería ZH. Amplia variedad de modelos para hombre y niños.">
+  <link rel="canonical" href="https://tusitio.cl/cat" />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Relojería ZH | Catálogo Completo de Relojes CAT" />
+  <meta property="og:description" content="Catálogo completo de relojes CAT. Encuentra tu modelo ideal en Relojería ZH." />
+  <meta property="og:image" content="https://tusitio.cl/img/logo-pro.png" />
+  <meta property="og:url" content="https://tusitio.cl/cat" />
+
+  <!-- JSON-LD: Negocio local + algunos modelos (catálogo) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"JewelryStore",
+    "name":"Relojería ZH - Catálogo CAT",
+    "image":"https://tusitio.cl/img/logo-pro.png",
+    "url":"https://tusitio.cl/cat",
+    "address":{"@type":"PostalAddress","addressLocality":"San Felipe","addressRegion":"Valparaíso","addressCountry":"CL"},
+    "geo":{"@type":"GeoCoordinates","latitude":-32.7495647,"longitude":-70.727704},
+    "sameAs":[]
+  }
+  </script>
+
+  <!-- FUENTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Animate.css (animaciones tipo "bootstrap vibes") -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+
+  <!-- CSS propio -->
+  <style>
+    :root {
+      --primary: #f59e0b;
+      --primary-light: #fef3c7;
+      --secondary: #1e293b;
+      --accent: #0ea5e9;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    .card {
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .card-img {
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .card-img img {
+      max-height: 85%;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.5s ease;
+    }
+    
+    .card:hover .card-img img {
+      transform: scale(1.05);
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+    }
+    
+    .card-title {
+      font-weight: 600;
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+    }
+    
+    .card-meta {
+      color: #64748b;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .card-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+    
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 1rem;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 0.2s ease;
+    }
+    
+    .card-cta:hover {
+      gap: 0.5rem;
+    }
+    
+    .filter-btn {
+      transition: all 0.2s ease;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .filter-btn.active {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.1), 0 2px 4px -1px rgba(245, 158, 11, 0.06);
+    }
+    
+    .watch-code {
+      color: #64748b;
+      font-size: 0.875rem;
+      font-family: monospace;
+    }
+    
+    /* Mejoras para móviles */
+    @media (max-width: 640px) {
+      .card-img {
+        height: 200px;
+      }
+      
+      .card-body {
+        padding: 1.25rem;
+      }
+      
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+      }
+    }
+    
+    /* MENÚ MÓVIL CORREGIDO */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 50;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+    
+    .mobile-nav.open {
+      display: block;
+      opacity: 1;
+    }
+    
+    .mobile-nav-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 80%;
+      max-width: 20rem;
+      background: white;
+      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+    }
+    
+    .mobile-nav.open .mobile-nav-content {
+      transform: translateX(0);
+    }
+    
+    /* Mejora para el modal en móviles */
+    @media (max-width: 768px) {
+      #modelModal .grid {
+        grid-template-columns: 1fr !important;
+      }
+      
+      #modelModal .aspect-square {
+        aspect-ratio: 1/1;
+        height: auto;
+      }
+    }
+    
+    /* Efecto de carga suave para imágenes */
+    .card-img img {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .card-img img.loaded {
+      opacity: 1;
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logo zhpro.jpg" />
+</head>
+<body class="text-slate-800 bg-slate-50 selection:bg-yellow-300 selection:text-black">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="Inicio Relojería ZH">
+        <img src="img/logo zhpro.jpg" alt="Logo Relojería ZH" class="h-12 w-12 rounded-full border-2 border-yellow-400 shadow-md object-cover"/>
+        <span class="text-2xl sm:text-3xl font-bold tracking-wide text-yellow-600 group-hover:text-yellow-500 transition-colors">
+          Relojería ZH
+        </span>
+      </a>
+      
+      <nav class="hidden md:flex items-center gap-8 font-medium">
+        <a href="index.html#inicio" class="hover:text-yellow-600 transition-colors">Inicio</a>
+        <a href="index.html#catalogo" class="hover:text-yellow-600 transition-colors">Catálogo</a>
+        <a href="index.html#colecciones" class="hover:text-yellow-600 transition-colors">Colecciones</a>
+        <a href="index.html#ubicacion" class="hover:text-yellow-600 transition-colors">Ubicación</a>
+        <a href="index.html#contacto" class="hover:text-yellow-600 transition-colors">Contacto</a>
+      </nav>
+      
+      <button id="menuBtn" class="md:hidden text-2xl p-2 rounded-lg hover:bg-slate-100 transition-colors" aria-label="Abrir menú">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- MENÚ MÓVIL CORREGIDO (SOLO UNO) -->
+  <div id="mobileMenu" class="mobile-nav">
+    <div class="mobile-nav-content">
+      <div class="p-5 border-b border-slate-100 flex justify-between items-center">
+        <span class="text-lg font-semibold text-slate-800">Menú</span>
+        <button id="closeMenuBtn" class="text-2xl p-1 rounded-lg hover:bg-slate-100 transition-colors" aria-label="Cerrar menú">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <nav class="p-5 flex flex-col gap-1">
+        <a href="index.html#inicio" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Inicio</a>
+        <a href="index.html#catalogo" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Catálogo</a>
+        <a href="index.html#colecciones" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Colecciones</a>
+        <a href="index.html#ubicacion" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Ubicación</a>
+        <a href="index.html#contacto" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Contacto</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="bg-gradient-to-br from-amber-50 to-yellow-100 py-16 md:py-20">
+      <div class="max-w-4xl mx-auto px-4 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-amber-800">Catálogo CAT</h1>
+        <p class="text-lg md:text-xl text-amber-600 max-w-3xl mx-auto mb-8 leading-relaxed">Descubre nuestra amplia selección de relojes CAT. Modelos para hombre y niños de la más alta calidad.</p>
+        <div class="flex justify-center">
+          <div class="w-16 h-1 bg-amber-600 rounded-full"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLECCIONES / FILTROS -->
+    <section id="colecciones" class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Filtrar por Categoría</h2>
+        <div class="text-sm text-slate-500" id="totalItems">Mostrando todos los modelos</div>
+      </div>
+      
+      <!-- Filtros mejorados -->
+      <div class="flex flex-wrap gap-3 mb-10">
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium active" data-filter="all">
+          <i class="bi bi-grid-fill mr-2"></i>Todos
+        </button>
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium" data-filter="varon">
+          <i class="bi bi-gender-male mr-2"></i>Hombre
+        </button>
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium" data-filter="ninos">
+          <i class="bi bi-emoji-smile mr-2"></i>Niños
+        </button>
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium" data-filter="correa">
+          <i class="bi bi-watch mr-2"></i>Correas
+        </button>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE MODELOS (GRID) -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-4 lg:px-8 pb-20">
+      <div id="catalogoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+        <!-- Los relojes se insertarán aquí mediante JavaScript -->
+      </div>
+      
+      <!-- Estado vacío (oculto inicialmente) -->
+      <div id="emptyState" class="hidden text-center py-16">
+        <div class="max-w-md mx-auto">
+          <div class="text-6xl text-slate-300 mb-4">🕐</div>
+          <h3 class="text-xl font-medium text-slate-500 mb-2">No encontramos modelos</h3>
+          <p class="text-slate-400">Prueba con otro filtro para ver más relojes</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL DETALLE MODELO MEJORADO -->
+    <div id="modelModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+      <div class="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden animate__animated animate__fadeInUp overflow-y-auto">
+        <button id="closeModal" class="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-slate-100 text-slate-600 transition-colors" aria-label="Cerrar detalle">
+          <i class="bi bi-x-lg text-xl"></i>
+        </button>
+        
+        <div class="grid md:grid-cols-2">
+          <div class="aspect-square bg-gradient-to-br from-slate-50 to-amber-50 flex items-center justify-center p-8">
+            <img id="modalImg" src="" alt="Imagen del modelo" class="max-h-[320px] object-contain" loading="lazy">
+          </div>
+          
+          <div class="p-6 md:p-8">
+            <div class="flex justify-between items-start mb-4">
+              <h3 id="modalTitle" class="text-2xl md:text-3xl font-bold text-slate-900">Modelo</h3>
+              <span id="modalTag" class="card-tag text-xs"></span>
+            </div>
+            
+            <p id="modalCode" class="watch-code mb-4">Código: </p>
+            <p id="modalMeta" class="text-slate-600 mb-6">Especificaciones</p>
+            
+            <ul class="space-y-3 text-sm mb-8">
+              <li class="flex items-center"><i class="bi bi-watch mr-3 text-yellow-500"></i> <span class="text-slate-600">Tamaño:</span> <span id="modalSize" class="ml-2 font-medium text-slate-900"></span></li>
+              <li class="flex items-center"><i class="bi bi-person mr-3 text-yellow-500"></i> <span class="text-slate-600">Género:</span> <span id="modalGender" class="ml-2 font-medium text-slate-900"></span></li>
+              <li class="flex items-center"><i class="bi bi-tag mr-3 text-yellow-500"></i> <span class="text-slate-600">Categoría:</span> <span id="modalCategory" class="ml-2 font-medium text-slate-900"></span></li>
+            </ul>
+            
+            <div class="pt-6 border-t border-slate-100">
+              <p class="text-sm text-slate-500 mb-4">¿Te interesa este modelo?</p>
+              <a href="https://wa.me/56977490064?text=Hola,%20estoy%20interesado%20en%20el%20modelo%20" 
+                 id="whatsappLink" 
+                 target="_blank" 
+                 rel="noopener"
+                 class="inline-flex items-center px-5 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors shadow-md hover:shadow-lg">
+                <i class="bi bi-whatsapp mr-2 text-lg"></i> Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 text-center text-sm text-slate-500">
+      © 2025 Relojería ZH — Catálogo informativo. Todos los derechos reservados SseketuDev & Hasse.
+        <a href="https://github.com/sseketuDev" target="_blank">sseketu</a> y 
+  <a href="https://github.com/Hasse-coder22" target="_blank">Hassecoder22</a>.
+    </div>
+  </footer>
+
+  <!-- Botón flotante WhatsApp mejorado -->
+  <a href="https://wa.me/+56 9 7749 0064" target="_blank" rel="noopener"
+     class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg p-4 flex items-center justify-center transition-all hover:scale-110"
+     aria-label="Contáctanos por WhatsApp">
+    <i class="bi bi-whatsapp text-2xl"></i>
+  </a>
+
+  <!-- JS: menú, carrusel, filtros y modal -->
+  <script>
+    // Datos de los relojes CAT
+    const watchData = [
+      // Página 1
+      {code: "13.169.23.123", size: "45,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/13.169.23.123-2-qrko06gwza37cbncopk0f8hs8uzpocax1x2e4d5gjk.png"},
+      {code: "13.169.27.721", size: "45,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/13.169.27.721-2-qrko0s37cgwsrcry6gwfil1dwq15ldoqsw2k5q9ekg.png"},
+      {code: "AH.141.21.127", size: "46MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AH.141.21.127-1-qbtae1dz9ziaisqzy5erlxuoydm8ygdnbuzsgbzkzk.png"},
+      {code: "AH.161.27.127", size: "46MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AH.161.27.127-q6w1b84q5frx0ph71y4yjgj44h0o51lz8obcy2zri8.png"},
+      {code: "AJ.141.11.121", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AJ.141.11.121-1-qbtae2btgtjkuepmsnte6fm5jrhm65hdnzn9xly6tc.png"},
+      {code: "AJ.141.11.627", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AJ.141.11.627-1-qbtae2btgtjkuepmsnte6fm5jrhm65hdnzn9xly6tc.png"},
+      {code: "AJ.151.25.525", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AJ.151.25.525-1-qbtae39nnnkv60o9n680qxdm55czdul404arevwsn4.png"},
+      {code: "AJ.161.34.127", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AJ.161.34.127-1-qbtae39nnnkv60o9n680qxdm55czdul404arevwsn4.png"},
+      {code: "AJ.161.38.126", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AJ.161.38.126-1-qbtae47huhm5hmmwhomnbf52qj8cljouc8y8w5vegw.png"},
+
+      // Página 2
+      {code: "AJ.191.35.129", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AJ.191.35.129-1-qbtae47huhm5hmmwhomnbf52qj8cljouc8y8w5vegw.png"},
+      {code: "AL.141.11.621", size: "43MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AL.141.11.621-1-qbta4ovrbapn2ebsj3ybtaroafouet9qplfyn9uiv4.png"},
+      {code: "AL.191.11.129", size: "43MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AL.191.11.129-1-qbta4ovrbapn2ebsj3ybtaroafouet9qplfyn9uiv4.png"},
+      {code: "AL.191.11.229", size: "43MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AL.191.11.229-1-qbta4ptli4qxe0afdmcydsj4vtk7midh1q3g4jt4ow.png"},
+      {code: "AO.141.11.126", size: "43MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AO.141.11.126_main-qrws9zqzqi5qogqr6m5op5h1d2fafuarr3sq19cqv4.png"},
+      {code: "AO.141.11.127", size: "43MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AO.141.11.127_main-qrwsa2kib09lnamnq5dkemrf581e2xlyrhr6h38kcg.png"},
+      {code: "AO.141.11.626", size: "43MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AO.141.11.626_main-qrwsab120il6jsadcr17j2mkhovp07jjsnmjskw0sg.png"},
+      {code: "AP.141.11.111", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AP.141.11.111_main-qrve087n6uqc8ov2iuptm471094z4pnh8z01nfcbgg.png"},
+      {code: "AP.141.11.717", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/2024/07/AP.141.11.717.png"},
+      {code: "AP.141.27.111", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/2024/07/AP.141.27.111.png"},
+      {code: "AP.149.21.117", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AP.149.21.117_main-qrvfxe642zewjqe9n90jl5v2ly8aix8frb59xesfls.png"},
+
+      // Página 3
+      {code: "AP.149.21.711", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/2024/07/AP.149.21.711.png"},
+      {code: "AP.169.21.111", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/2024/07/AP.169.21.111.png"},
+      {code: "AR.141.23.133", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AR.141.23.133_main-qrx0gtsjfprkd8h9k24wsr218180u0rsaefl5s775s.png"},
+      {code: "AR.161.21.131", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AR.161.21.131_main-qrx0gzfkkpzaaw92n4ko7pmsscg847e6b6ci1fyu4g.png"},
+      {code: "AR.191.21.139", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AR.191.21.139_main-qrx0h1b8ye1uy46cc5dxcp5pz46yjllmzfngzzw1s0.png"},
+      {code: "AR.191.26.639", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/AR.191.26.639_main-qrx0h44riw5pwy28volt26g3r9t26owtztlxftrv9c.png"},
+      {code: "AS.149.23.337", size: "43MM", gender: "Varon", tags: "varon", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/as-149-23-337-e60d572b15b05af97917483603274334-1024-1024.webp"},
+      {code: "AS.149.27.137", size: "43MM", gender: "Varon", tags: "varon", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/as-149-27-137-2f1b61a2f2fdb6107e17483601278374-1024-1024.webp"},
+      {code: "AS.149.28.137", size: "43MM", gender: "Varon", tags: "varon", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/as-149-28-137-d545a41d4547ec60e417483602946636-1024-1024.webp"},
+      {code: "KD.410.26.617", size: "32MM", gender: "Niños", tags: "ninos", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/kd-410-26-617-c48d73d3a456a2071a17483607315443-1024-1024.png"},
+
+      // Página 4
+      {code: "KE.140.21.117", size: "32MM", gender: "Niños", tags: "ninos", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/KE.140.21.117_main-qrwqr3y8or10s4gpnw3w4024p4xr02ezjgi39mqa68.png"},
+      {code: "KE.140.21.111", size: "30MM", gender: "Niños", tags: "ninos", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/KE.140.21.111_main-qrwqr22kb2yg4wjfyvamz0j7id70ko7iv774b2t2io.png"},
+      {code: "KE.140.26.212", size: "30MM", gender: "Niños", tags: "ninos", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/KE.140.26.212_main-qrwqr5tx2f3lfcdzcwx58zl1vwohfgmg7pt286nhts.png"},
+      {code: "KE.140.27.212", size: "30MM", gender: "Niños", tags: "ninos", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/KE.140.27.212_main-qrwqr7plg3662kb91xqedz3z2of7uutwvz416qkphc.png"},
+      {code: "KE.140.28.212", size: "30MM", gender: "Niños", tags: "ninos", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/KE.140.28.212_main-qrwqr9l9tr8qps8iqyjniymw9g5ya91dk8f05ahx4w.png"},
+      {code: "LB.111.21.131", size: "45,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/LB.111.21.131-1-qbtaaupo475b6ddkjrua5qsghdbgvdqe83ejwkpm2o.png"},
+      {code: "LB.111.21.137", size: "45,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/LB.111.21.137-1-qbtaaupo475b6ddkjrua5qsghdbgvdqe83ejwkpm2o.png"},
+      {code: "LB.111.21.231", size: "45,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/LB.111.21.231-1-qbtaaupo475b6ddkjrua5qsghdbgvdqe83ejwkpm2o.png"},
+      {code: "LB.111.27.137", size: "45,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/LB.111.27.137-1-qbtaavnib16lhzc7ea8wq8jx2r6u32u4k821duo7wg.png"},
+      {code: "LF.111.21.131", size: "44,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/LF.111.21.131-qf5jkh7tvb0e23agucyx2mhoiqmz05tkrx0wz2zke8.png"},
+      {code: "LF.111.21.731", size: "44,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/LF.111.21.731-qf5jk5xrlaky6rquo83e8pc5e46kfsksqd737rgagw.png"},
+      {code: "LF.111.25.537", size: "44,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/LF.111.25.537-qf5jjunpba5ibg78i37ves6m9hq5vfc0otd9gfx0jk.png"},
+
+      // Página 5
+      {code: "NR.131.11.223", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/NR.131.11.223-3-ql5ee8u30nctt8hb9r698islc897x00042ujtbun7k.png"},
+      {code: "NR.141.34.121", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/NR.141.34.121-3-ql5e9s3ojz8snwyscbp1w5crrc9gcr9whzair0gyrk.png"},
+      {code: "NR.163.34.129", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/NR.163.34.129-ql57io4exkfzuo3ixqlrhzvwooiuiz55ep0jbmxm2o.png"},
+      {code: "NR.183.34.123", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/NR.183.34.123-2-ql5dvnkzulwo6vhftpvvx7oedvvvoi7482cu4bey9s.png"},
+      {code: "OC.167.21.142", size: "47MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/OC.167.21.142-3-qbtabthp52gx3xz1wovh800igmk1s6kgovjinta1og.png"},
+      {code: "OC.167.23.143", size: "47MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/OC.167.23.143-2-qbtabl15fk5c7gbca37u3k5d45pquwmvnpo5cbml8g.png"},
+      {code: "OC.167.21.148", size: "47MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/OC.167.21.148-2-qbtabl15fk5c7gbca37u3k5d45pquwmvnpo5cbml8g.png"},
+      {code: "PU.243.11.211", size: "45MM", gender: "Universal/Recta", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/PU.243.11.211-2-qbtabosi6wahhw5vo4ucdj77hp77pp1t08a39fh0jk.png"},
+      {code: "PU.251.35.515", size: "45MM", gender: "Universal/Recta", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/PU.251.35.515-2-qbtabnuo02976a78tmfpt1fqwbbuhzy2o3mls5ieps.png"},
+      {code: "PU.261.35.114", size: "45MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/PU.261.35.114-2-qbtabnuo02976a78tmfpt1fqwbbuhzy2o3mls5ieps.png"},
+      {code: "PU.263.35.114", size: "45MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/PU.263.35.114-2-qbtabosi6wahhw5vo4ucdj77hp77pp1t08a39fh0jk.png"},
+
+      // Página 6
+      {code: "PU.293.35.119", size: "45MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/PU.293.35.119-2-qbtabx91wem2edtlaqhzhz2cu61imyze1e5gkx4gzk.png"},
+      {code: "PZ.141.23.323", size: "44,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/PZ.141.23.323-2-ql5d2vqun6iosla1ua50lh2fr9pe21ywxnfr9e2sqo.png"},
+      {code: "PZ.149.21.128", size: "44,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/PZ.149.21.128-q72iiq3un6kx5gjo8g5ykdtweio5pm5sijej4swi68.png"},
+      {code: "PZ.159.28.929", size: "44,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/PZ.159.28.929-q72imjcaczss8j0bz3hhof774rvqxfalpenf7790xs.png"},
+      {code: "PZ.169.12.121", size: "44,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/PZ.169.12.121-2-qbtabz4qa2on1lquzrb8myla0xs92d6upngfjh1on4.png"},
+      {code: "QA.141.11.132", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/QA.141.11.132-qf5gt9d4gv6sjves7h0lvnu36jo6ibxkgtztbm3l6o.png"},
+      {code: "QA.141.11.237", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/QA.141.11.237-qf5gskxbj69c60ea66gb2u03qj0my78jph16uf3tog.png"},
+      {code: "QA.161.16.137", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/QA.161.16.137-qf5gsal3fzv6mataujzetem17afllj3i01uukdj5kw.png"},
+      {code: "QA.161.16.138", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/QA.161.16.138-qf5gs08vcth12l8bixiijz7yo1uk8uygamoiabyhhc.png"},
+      {code: "QB.141.27.137", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/QB.141.27.137_main-qrtoshlk41z8glx0t9w6t80b4z36r6yk9h4ef6ujgg.png"},
+      {code: "QB.143.11.137", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/QB.143.11.137_main-qrtr59nij414ibfo6ehp2jvhvmly6xj7lq0j6eihog.png"},
+      {code: "QB.143.11.637", size: "44MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/QB.143.11.637_main-qrtrtg22bp4n58bczuq87g8byffu6ninle45kmnxmo.png"},
+      
+
+      // Página 7 correas 
+      {code: "YW.143.11.137", size: "42,5MM", gender: "Varon", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/YW.143.11.137_main-qrmj7805hxklcsiolc3580syfz85ciqnnp2g61s4qo.png"},
+      {code: "YW.143.11.731", size: "#N/D", gender: "#N/D", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/YW.143.11.731_main-qrmouurg2ubujmqciuuiw4wvc1jrvy59bky9z1uqrk.png"},
+      {code: "YW.143.11.138", size: "#N/D", gender: "#N/D", tags: "varon", image: "https://catwatches.com/wp-content/uploads/elementor/thumbs/YW.143.11.138_main-qrmpa4n14x8l7ijmbyj9ws5iug9hyvs8f6lbpx7fnk.png"},
+      {code: "1D-21", size: "30mm", gender: "Compatible Mod: 1D", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/1d16721rubbe-5a0efe15ed75a74ddc17497560019270-1024-1024.webp"},
+      {code: "A1-21", size: "16mm", gender: "Compatible Mod: A1/A8/A5", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/a1191rubber-0cc6e34c042b096efc17092986989045-1024-1024.webp"},
+      {code: "CB-21", size: "20mm", gender: "Compatible Mod: CB", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/cb16127rubbe1-4fb874b9735ae4c66516748295781136-1024-1024-b1d33da44f0964109216748327429711-1024-1024.webp"},
+      {code: "CC-21", size: "14mm", gender: "Compatible Mod: CC", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/cc14121rubbe-2fc0e350f1f4304a6016752658547711-1024-1024.webp"},
+      {code: "K1/K2/K3-21", size: "21mm", gender: "Compatible Mod: K1/K2/K3", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/ma-k112123rubbe-1e4b115e9da79a41b317309188464418-1024-1024-44ef201a3e543654f717309217369012-1024-1024.webp"},
+      {code: "LB", size: "21mm", gender: "Compatible Mod: LB/LH", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/d_727355-mla31586613596_072019-o-e79ac76aa8d39155ac16306922181995-1024-1024.webp"},
+      {code: "LF-21", size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/d_693220-mla46105044047_052021-o-991ef2af6987a8fe7b16306932494877-1024-1024.webp"},
+      {code: "LJ-21", size: "20mm", gender: "Compatible Mod: Universal/Recta", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/lj14024rubbe1-199b1f48000fa94f7816904737058093-1024-1024-7a9bdb05dcae4d3baf16904791256848-1024-1024.webp"},
+      {code: "LK-21", size: "22mm", gender: "Compatible Mod: LK", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/lk11121rubbe-21-e3805ea9a5e21ae0cc16618849501632-1024-1024-a6716df5e0937fe93f16618858821846-1024-1024.webp"},
+      {code: "MC-21", size: "24mm", gender: "Compatible Mod: MC", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/mc15525rubbe-500571d02b2600e6fb16902138304678-1024-1024.webp"},
+      {code: "MF-21", size: "24mm", gender: "Compatible Mod: Universal/Recta", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/mf14521rubbe-8a85dbc937829f8e1d16746605184172-1024-1024.webp"},
+      {code: "NP-34", size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/np14135leath1-0e3613882673f262d516904771512726-1024-1024-2c84ed7343d33fe75f16904797663771-1024-1024.webp"},
+      {code: "OA-21", size: "28mm", gender: "Compatible Mod: OA", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/d_852678-mla45916984868_052021-o-2a8b57de78438ba51d16306947093627-1024-1024.jpg"},
+      {code: "OB-21", size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/ob14721rubbe1-b0f0ae4464d8113dad16904773174529-1024-1024-89d7953db2af432e9616904798779094-1024-1024.webp"},
+      {code: "AJ-21", size: "27mm", gender: "Compatible Mod AJ", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/aj16121rubbe-c32a22776beb80523316748327326609-1024-1024.webp"},
+      {code: "P9-21", size: "22mm", gender: "Universal/Recta", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/p914026rubbe-24743409117468974d16902140852257-1024-1024.webp"},
+      {code: "PU-34", size: "24mm", gender: "Compatible Mod: Universal/Recta", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/d_663110-mla31651099126_082019-o-86821b19a243c1e29a16306942456143-1024-1024.jpg"},
+      {code: "PY-34", size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/py16135leath1-1d985ac0d7d1de913416751760554641-1024-1024-0f162e765b39e9147016751771131634-1024-1024.webp"},
+      {code: "PZ-21", size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/pz14121rubbe-fd35bb127cb8c20caa17096481429866-1024-1024-4d8df309952c7d9ae217096503185003-1024-1024.webp"},
+      {code: "SJ-21", size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa", image: "https://acdn-us.mitiendanube.com/stores/002/113/388/products/sj-141-21-21-6ab0cd9b2450b530d616439988616101-1024-1024.jpeg"}
+    ];
+
+    // Función para cargar imágenes reales o usar placeholder si no existen
+    function loadWatchImage(watch) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(watch.image);
+        img.onerror = () => resolve(generatePlaceholderUrl(watch.code));
+        img.src = watch.image;
+      });
+    }
+
+    // Función para generar placeholder
+    function generatePlaceholderUrl(code) {
+      const baseUrl = "https://placehold.co/400x300/fffbeb/f59e0b";
+      const text = encodeURIComponent(code);
+      return `${baseUrl}?text=${text}&font=monospace`;
+    }
+
+    // Función para renderizar las tarjetas de relojes
+    async function renderWatchCards(watches) {
+      const catalogGrid = document.getElementById('catalogoGrid');
+      const emptyState = document.getElementById('emptyState');
+      
+      catalogGrid.innerHTML = '';
+      
+      if (watches.length === 0) {
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      
+      emptyState.classList.add('hidden');
+      
+      for (const watch of watches) {
+        const imageUrl = await loadWatchImage(watch);
+        
+        const card = document.createElement('article');
+        card.className = 'card animate__animated animate__fadeIn';
+        card.setAttribute('data-tags', watch.tags);
+        
+        card.innerHTML = `
+          <a href="#${watch.code}" class="block group" aria-label="Ver detalles ${watch.code}">
+            <div class="card-img">
+              <img src="${imageUrl}" alt="${watch.code}" loading="lazy" class="lazy" onload="this.classList.add('loaded')">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">${watch.code}</h3>
+              <div class="card-meta">
+                <span>${watch.size}</span>
+                <span>•</span>
+                <span>${watch.gender}</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="card-tag">${watch.tags === 'ninos' ? 'Niños' : watch.tags === 'correa' ? 'Correa' : 'Hombre'}</span>
+              </div>
+              <span class="card-cta">
+                Ver detalles
+                <i class="bi bi-arrow-right-short transition-all"></i>
+              </span>
+            </div>
+          </a>
+        `;
+        
+        catalogGrid.appendChild(card);
+      }
+      
+      // Actualizar contador
+      document.getElementById('totalItems').textContent = `Mostrando ${watches.length} modelo${watches.length !== 1 ? 's' : ''}`;
+    }
+
+    // Inicializar con todos los relojes
+    renderWatchCards(watchData);
+
+// CORRECCIÓN: Navegación móvil mejorada
+const menuBtn = document.getElementById('menuBtn');
+const closeMenuBtn = document.getElementById('closeMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+function openMobileMenu() {
+  mobileMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+menuBtn.addEventListener('click', openMobileMenu);
+closeMenuBtn.addEventListener('click', closeMobileMenu);
+
+// Cerrar menú al hacer clic fuera
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) {
+    closeMobileMenu();
+  }
+});
+    
+    // Cerrar menú al hacer clic fuera
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) {
+        closeMobileMenu();
+      }
+    });
+
+    // Filtros catálogo
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        let filteredWatches;
+        if (filter === 'all') {
+          filteredWatches = watchData;
+        } else {
+          filteredWatches = watchData.filter(watch => watch.tags.includes(filter));
+        }
+        
+        renderWatchCards(filteredWatches);
+      });
+    });
+
+    // Modal de detalle
+    const modal = document.getElementById('modelModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalCode = document.getElementById('modalCode');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalSize = document.getElementById('modalSize');
+    const modalGender = document.getElementById('modalGender');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalTag = document.getElementById('modalTag');
+    const whatsappLink = document.getElementById('whatsappLink');
+
+    document.addEventListener('click', async (e) => {
+      if (e.target.closest('.card a')) {
+        e.preventDefault();
+        const card = e.target.closest('.card');
+        const code = card.querySelector('.card-title').textContent.trim();
+        const watch = watchData.find(w => w.code === code);
+        
+        if (watch) {
+          const imageUrl = await loadWatchImage(watch);
+          modalImg.src = imageUrl;
+          modalImg.alt = watch.code;
+          modalTitle.textContent = watch.code;
+          modalCode.textContent = `Código: ${watch.code}`;
+          modalMeta.textContent = `${watch.size} · ${watch.gender}`;
+          modalSize.textContent = watch.size;
+          modalGender.textContent = watch.gender;
+          
+          // Convertir categoría a nombre legible
+          let categoryName = "";
+          switch(watch.tags) {
+            case "varon":
+              categoryName = "Reloj para hombre";
+              break;
+            case "ninos":
+              categoryName = "Reloj para niños";
+              break;
+            case "correa":
+              categoryName = "Correa";
+              break;
+            default:
+              categoryName = watch.tags;
+          }
+          
+          modalCategory.textContent = categoryName;
+          modalTag.textContent = watch.tags === 'ninos' ? 'Niños' : watch.tags === 'correa' ? 'Correa' : 'Hombre';
+          
+          // Actualizar enlace de WhatsApp con el modelo específico
+          whatsappLink.href = `https://wa.me/56977490064?text=Hola,%20estoy%20interesado%20en%20el%20modelo%20${encodeURIComponent(watch.code)}`;
+
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    });
+
+    // Cerrar modal
+    function closeModalFunc() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    closeModal.addEventListener('click', closeModalFunc);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModalFunc();
+      }
+    });
+    
+    // Cerrar con tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModalFunc();
+      }
+    });
+
+    // Lazy loading para imágenes
+    if ('loading' in HTMLImageElement.prototype) {
+      const images = document.querySelectorAll('img.lazy');
+      images.forEach(img => {
+        img.src = img.src;
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- META BÁSICO -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Relojería ZH | Catálogo Citizen Económicos</title>
+  <meta name="description" content="Catálogo de relojes Citizen más económicos en Relojería ZH San Felipe. Tecnología Eco-Drive, diseños clásicos y modernos.">
+  <link rel="canonical" href="https://tusitio.cl/citizen" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Relojería ZH | Catálogo Citizen Económicos" />
+  <meta property="og:description" content="Catálogo de relojes Citizen más económicos. Tecnología Eco-Drive que se carga con cualquier fuente de luz." />
+  <meta property="og:image" content="https://tusitio.cl/img/logo-pro.png" />
+  <meta property="og:url" content="https://tusitio.cl/citizen" />
+
+  <!-- JSON-LD: Negocio local + algunos modelos (catálogo) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"JewelryStore",
+    "name":"Relojería ZH - Catálogo Citizen",
+    "image":"https://tusitio.cl/img/logo-pro.png",
+    "url":"https://tusitio.cl/citizen",
+    "address":{"@type":"PostalAddress","addressLocality":"San Felipe","addressRegion":"Valparaíso","addressCountry":"CL"},
+    "geo":{"@type":"GeoCoordinates","latitude":-32.7495647,"longitude":-70.727704},
+    "sameAs":[]
+  }
+  </script>
+
+  <!-- FUENTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Animate.css (animaciones tipo "bootstrap vibes") -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+
+  <!-- CSS propio -->
+  <style>
+    :root {
+      --primary: #0ea5e9;
+      --primary-light: #e0f2fe;
+      --secondary: #1e293b;
+      --accent: #f59e0b;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    .card {
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .card-img {
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .card-img img {
+      max-height: 85%;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.5s ease;
+    }
+    
+    .card:hover .card-img img {
+      transform: scale(1.05);
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+    }
+    
+    .card-title {
+      font-weight: 600;
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+    }
+    
+    .card-meta {
+      color: #64748b;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .card-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+    
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 1rem;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 0.2s ease;
+    }
+    
+    .card-cta:hover {
+      gap: 0.5rem;
+    }
+    
+    .filter-btn {
+      transition: all 0.2s ease;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .filter-btn.active {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.1), 0 2px 4px -1px rgba(14, 165, 233, 0.06);
+    }
+    
+    .watch-code {
+      color: #64748b;
+      font-size: 0.875rem;
+      font-family: monospace;
+    }
+    
+    /* Mejoras para móviles */
+    /* MENÚ MÓVIL CORREGIDO */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 50;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+    
+    .mobile-nav.open {
+      display: block;
+      opacity: 1;
+    }
+    
+    .mobile-nav-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 80%;
+      max-width: 20rem;
+      background: white;
+      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+    }
+    
+    .mobile-nav.open .mobile-nav-content {
+      transform: translateX(0);
+    }
+    
+    /* Mejora para el modal en móviles */
+    @media (max-width: 768px) {
+      #modelModal .grid {
+        grid-template-columns: 1fr !important;
+      }
+      
+      #modelModal .aspect-square {
+        aspect-ratio: 1/1;
+        height: auto;
+      }
+    }
+    
+    /* Efecto de carga suave para imágenes */
+    .card-img img {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .card-img img.loaded {
+      opacity: 1;
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logo zhpro.jpg" />
+</head>
+<body class="text-slate-800 bg-slate-50 selection:bg-yellow-300 selection:text-black">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="Inicio Relojería ZH">
+        <img src="img/logo zhpro.jpg" alt="Logo Relojería ZH" class="h-12 w-12 rounded-full border-2 border-yellow-400 shadow-md object-cover"/>
+        <span class="text-2xl sm:text-3xl font-bold tracking-wide text-yellow-600 group-hover:text-yellow-500 transition-colors">
+          Relojería ZH
+        </span>
+      </a>
+      
+      <nav class="hidden md:flex items-center gap-8 font-medium">
+        <a href="index.html#inicio" class="hover:text-yellow-600 transition-colors">Inicio</a>
+        <a href="index.html#catalogo" class="hover:text-yellow-600 transition-colors">Catálogo</a>
+        <a href="index.html#colecciones" class="hover:text-yellow-600 transition-colors">Colecciones</a>
+        <a href="index.html#ubicacion" class="hover:text-yellow-600 transition-colors">Ubicación</a>
+        <a href="index.html#contacto" class="hover:text-yellow-600 transition-colors">Contacto</a>
+      </nav>
+      
+      <button id="menuBtn" class="md:hidden text-2xl p-2 rounded-lg hover:bg-slate-100 transition-colors" aria-label="Abrir menú">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- MENÚ MÓVIL CORREGIDO (SOLO UNO) -->
+  <div id="mobileMenu" class="mobile-nav">
+    <div class="mobile-nav-content">
+      <div class="p-5 border-b border-slate-100 flex justify-between items-center">
+        <span class="text-lg font-semibold text-slate-800">Menú</span>
+        <button id="closeMenuBtn" class="text-2xl p-1 rounded-lg hover:bg-slate-100 transition-colors" aria-label="Cerrar menú">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <nav class="p-5 flex flex-col gap-1">
+        <a href="index.html#inicio" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Inicio</a>
+        <a href="index.html#catalogo" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Catálogo</a>
+        <a href="index.html#colecciones" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Colecciones</a>
+        <a href="index.html#ubicacion" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Ubicación</a>
+        <a href="index.html#contacto" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Contacto</a>
+      </nav>
+    </div>
+  </div>
+
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-16 md:py-20">
+      <div class="max-w-4xl mx-auto px-4 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-blue-800">Catálogo Citizen</h1>
+        <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8 leading-relaxed">Tecnología Eco-Drive: relojes que se cargan con cualquier fuente de luz. Precisión y calidad japonesa a precios accesibles.</p>
+        <div class="flex justify-center">
+          <div class="w-16 h-1 bg-blue-600 rounded-full"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLECCIONES / FILTROS -->
+    <section id="colecciones" class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Filtrar por Categoría</h2>
+        <div class="text-sm text-slate-500" id="totalItems">Mostrando todos los modelos</div>
+      </div>
+      
+      <!-- Filtros mejorados -->
+      <div class="flex flex-wrap gap-3 mb-10">
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium active" data-filter="all">
+          <i class="bi bi-grid-fill mr-2"></i>Todos
+        </button>
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium" data-filter="ecodrive">
+          <i class="bi bi-lightning-charge mr-2"></i>Eco-Drive
+        </button>
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium" data-filter="analogo">
+          <i class="bi bi-watch mr-2"></i>Analógico
+        </button>
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium" data-filter="dama">
+          <i class="bi bi-gender-female mr-2"></i>Dama
+        </button>
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium" data-filter="caballero">
+          <i class="bi bi-gender-male mr-2"></i>Caballero
+        </button>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE MODELOS (GRID) -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-4 lg:px-8 pb-20">
+      <div id="catalogoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+        <!-- Los relojes se insertarán aquí mediante JavaScript -->
+      </div>
+      
+      <!-- Estado vacío (oculto inicialmente) -->
+      <div id="emptyState" class="hidden text-center py-16">
+        <div class="max-w-md mx-auto">
+          <div class="text-6xl text-slate-300 mb-4">🕐</div>
+          <h3 class="text-xl font-medium text-slate-500 mb-2">No encontramos modelos</h3>
+          <p class="text-slate-400">Prueba con otro filtro para ver más relojes</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL DETALLE MODELO MEJORADO -->
+    <div id="modelModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+      <div class="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden animate__animated animate__fadeInUp overflow-y-auto">
+        <button id="closeModal" class="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-slate-100 text-slate-600 transition-colors" aria-label="Cerrar detalle">
+          <i class="bi bi-x-lg text-xl"></i>
+        </button>
+        
+        <div class="grid md:grid-cols-2">
+          <div class="aspect-square bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center p-8">
+            <img id="modalImg" src="" alt="Imagen del modelo" class="max-h-[320px] object-contain" loading="lazy">
+          </div>
+          
+          <div class="p-6 md:p-8">
+            <div class="flex justify-between items-start mb-4">
+              <h3 id="modalTitle" class="text-2xl md:text-3xl font-bold text-slate-900">Modelo</h3>
+              <span id="modalTag" class="card-tag text-xs"></span>
+            </div>
+            
+            <p id="modalCode" class="watch-code mb-4">Código: </p>
+            <p id="modalMeta" class="text-slate-600 mb-6">Especificaciones</p>
+            
+            <ul class="space-y-3 text-sm mb-8">
+              <li class="flex items-center"><i class="bi bi-watch mr-3 text-blue-500"></i> <span class="text-slate-600">Tamaño:</span> <span id="modalSize" class="ml-2 font-medium text-slate-900"></span></li>
+              <li class="flex items-center"><i class="bi bi-gear mr-3 text-blue-500"></i> <span class="text-slate-600">Movimiento:</span> <span id="modalMovement" class="ml-2 font-medium text-slate-900"></span></li>
+              <li class="flex items-center"><i class="bi bi-droplet mr-3 text-blue-500"></i> <span class="text-slate-600">Resistencia:</span> <span id="modalWaterRes" class="ml-2 font-medium text-slate-900"></span></li>
+              <li class="flex items-center"><i class="bi bi-tag mr-3 text-blue-500"></i> <span class="text-slate-600">Categoría:</span> <span id="modalCategory" class="ml-2 font-medium text-slate-900"></span></li>
+            </ul>
+            
+            <div class="pt-6 border-t border-slate-100">
+              <p class="text-sm text-slate-500 mb-4">¿Te interesa este modelo?</p>
+              <a href="https://wa.me/56977490064?text=Hola,%20estoy%20interesado%20en%20el%20modelo%20" 
+                 id="whatsappLink" 
+                 target="_blank" 
+                 rel="noopener"
+                 class="inline-flex items-center px-5 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors shadow-md hover:shadow-lg">
+                <i class="bi bi-whatsapp mr-2 text-lg"></i> Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 text-center text-sm text-slate-500">
+      © 2025 Relojería ZH — Catálogo informativo. Todos los derechos reservados 
+        <a href="https://github.com/sseketuDev" target="_blank">sseketu</a> & 
+  <a href="https://github.com/Hasse-coder22" target="_blank">Hassecoder22</a>.
+    </div>
+  </footer>
+
+  <!-- Botón flotante WhatsApp mejorado -->
+  <a href="https://wa.me/+56977490064" target="_blank" rel="noopener"
+     class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg p-4 flex items-center justify-center transition-all hover:scale-110"
+     aria-label="Contáctanos por WhatsApp">
+    <i class="bi bi-whatsapp text-2xl"></i>
+  </a>
+
+  <!-- JS: menú, carrusel, filtros y modal -->
+  <script>
+    // Datos de los 40 relojes Citizen más económicos
+    const watchData = [
+      // Modelos más económicos para dama
+      {code: "EL3090-81X", size: "35MM", movement: "Dama Analogo Quartz", waterRes: "50m", tags: "analogo,dama", image: "https://citizenwatch.widen.net/content/vejsyl6kek/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"},
+      {code: "EQ0540-57A", size: "25MM", movement: "Dama Analogo Quartz", waterRes: "50m", tags: "analogo,dama", image: "https://citizenwatch.widen.net/content/hzakpiiu3k/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"},
+      {code: "EW2722-01A", size: "30.5MM", movement: "Dama Analogo Quartz", waterRes: "50m", tags: "analogo,dama", image: "https://citizen.es/wp-content/uploads/2024/11/EW2722-01A.jpg"},
+      {code: "EM0491-81D", size: "31.5MM", movement: "Dama Analogo Quartz", waterRes: "50m", tags: "analogo,dama", image: "https://citizen.es/wp-content/uploads/2021/07/EM0491-81D.jpg"},
+      {code: "EM0493-85P", size: "31.5MM", movement: "Dama Analogo Quartz", waterRes: "50m", tags: "analogo,dama", image: "https://citizen.es/wp-content/uploads/2021/07/EM0493-85P.jpg"},
+
+      // Modelos económicos unisex y caballero
+      {code: "EO2021-05L", size: "36.5MM", movement: "Eco-Drive", waterRes: "200m", tags: "ecodrive,caballero", image: "https://citizen.es/wp-content/uploads/2023/04/EO2021-05L.jpg"},
+      {code: "EO2020-08E", size: "36.5MM", movement: "Eco-Drive", waterRes: "200m", tags: "ecodrive,caballero", image: "https://citizen.es/wp-content/uploads/2023/04/EO2020-08E.jpg"},
+      {code: "BI1030-53E", size: "42MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://citizenwatch.widen.net/content/m9hdfaoocg/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"},
+      {code: "BI1030-53A", size: "42MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://citizenwatch.widen.net/content/iaehmlzcal/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"},
+      {code: "BF2011-51L", size: "41MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://citizenwatch.widen.net/content/tvgvaoznp2/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"},
+
+      // Eco-Drive económicos para dama
+      {code: "EW2621-75L", size: "31.5MM", movement: "Premium Eco-Drive", waterRes: "30m", tags: "ecodrive,dama", image: "https://citizen.es/wp-content/uploads/2024/11/EW2621-75L.jpg"},
+      {code: "EW2621-75M", size: "31.5MM", movement: "Premium Eco-Drive", waterRes: "100m", tags: "ecodrive,dama", image: "https://citizen.es/wp-content/uploads/2024/11/EW2621-75M.jpg"},
+      {code: "EW2621-75X", size: "31.5MM", movement: "Premium Eco-Drive", waterRes: "100m", tags: "ecodrive,dama", image: "https://citizen.es/wp-content/uploads/2024/11/EW2621-75X.jpg"},
+
+      // Eco-Drive económicos para caballero
+      {code: "BM8470-11E", size: "42MM", movement: "Urban Eco-Drive", waterRes: "100m", tags: "ecodrive,caballero", image: "https://citizen-me.com/assets/upload/product/59673a0a45153.png"},
+      {code: "BM8475-00F", size: "42MM", movement: "Urban Eco-Drive", waterRes: "100m", tags: "ecodrive,caballero", image: "https://citizen-me.com/assets/upload/product/59673c129620a.png"},
+      {code: "BM8475-26E", size: "42MM", movement: "Urban Eco-Drive", waterRes: "100m", tags: "ecodrive,caballero", image: "https://citizen-me.com/assets/upload/product/59673e19582ea.png"},
+      {code: "BM8475-00X", size: "42MM", movement: "Urban Eco-Drive", waterRes: "100m", tags: "ecodrive,caballero", image: "https://citizen-me.com/assets/upload/product/59673d4854511.png"},
+      {code: "BM8471-01E", size: "42MM", movement: "Urban Eco-Drive", waterRes: "100m", tags: "ecodrive,caballero", image: "https://citizen-me.com/assets/upload/product/59673ad66c7dd.png"},
+      {code: "AW1670-82A", size: "42MM", movement: "Premium Eco-Drive", waterRes: "100m", tags: "ecodrive,caballero", image: "https://acdn-us.mitiendanube.com/stores/004/136/519/products/_0079_0-350449-7f9d7043e39f49f62717371458362277-1024-1024.webp"},
+      {code: "AW1231-07E", size: "40MM", movement: "Premium Eco-Drive", waterRes: "30m", tags: "ecodrive,caballero", image: "https://acdn-us.mitiendanube.com/stores/004/136/519/products/0038-aw123107-e-c006639fb600a9ed1517232372783960-1024-1024.webp"},
+
+      // Modelos analógicos económicos
+      {code: "BI1034-52E", size: "42MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://acdn-us.mitiendanube.com/stores/004/136/519/products/0034-bi103452-e-2bb3f11193b6d9982617229780288044-1024-1024.webp"},
+      {code: "BI5051-51A", size: "42MM", movement: "Analogo Quartz", waterRes: "100m", tags: "analogo,caballero", image: "https://citizenwatch.widen.net/content/23ny8wzrxb/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"},
+      {code: "B15058-52L", size: "42MM", movement: "Analogo Quartz", waterRes: "100m", tags: "analogo,caballero", image: "https://citizenwatch.widen.net/content/jupbwk3mpp/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"},
+      {code: "B15060-51L", size: "39MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://citizenwatch.widen.net/content/tp0tdqydtd/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"},
+      {code: "BI5006-81P", size: "39MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://acdn-us.mitiendanube.com/stores/004/136/519/products/0085-bi500681-p-acefbb3e867b8cc34d17229781015664-1024-1024.webp"},
+
+      // Modelos con estilo casual
+      {code: "BF2013-56P", size: "41MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://acdn-us.mitiendanube.com/stores/004/136/519/products/0093-bf201356-p-e62c3368c120759f4a17229781104531-1024-1024.webp"},
+      {code: "BF2018-52E", size: "41MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://citizenwatch.widen.net/content/bjvnnv6spv/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"},
+      {code: "BF2018-52H", size: "41MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://acdn-us.mitiendanube.com/stores/004/136/519/products/0077-bf201852-h-d9700fcbde38258a0517229780935564-1024-1024.webp"},
+      {code: "FE1241-71X", size: "29.4MM", movement: "Eco-Drive", waterRes: "50m", tags: "ecodrive,dama", image: "https://citizen.es/wp-content/uploads/2024/01/FE1241-71X.jpg"},
+      {code: "FE1244-72A", size: "29.4MM", movement: "Eco-Drive", waterRes: "50m", tags: "ecodrive,dama", image: "https://citizen.es/wp-content/uploads/2024/01/FE1244-72A.jpg"},
+
+      // Modelos clásicos económicos
+      {code: "BI5012-53E", size: "41MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://citizenwatch.widen.net/content/uyrv8c0dhx/png/Cuarzo.png?u=41zuoe&width=500&height=625&quality=80&crop=false&keep=c&color=FFFFFF00"},
+      {code: "B15096-53L", size: "42MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://placehold.co/400x300/f0f9ff/0ea5e9?text=B15096-53L&font=monospace"},
+      {code: "BI1036-57L", size: "42MM", movement: "Analogo Quartz", waterRes: "100m", tags: "analogo,caballero", image: "https://citizenwatch.widen.net/content/maxblbv8ft/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"},
+      {code: "BI1032-58L", size: "42MM", movement: "Analogo Quartz", waterRes: "100m", tags: "analogo,caballero", image: "https://citizenwatch.widen.net/content/f58weszszi/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"},
+      {code: "BI1033-04E", size: "42MM", movement: "Analogo Quartz", waterRes: "100m", tags: "analogo,caballero", image: "https://citizenwatch.widen.net/content/axdwvq959p/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"},
+
+      // Relojes con correa de acero inoxidable
+      {code: "BF0582-51F", size: "39MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://acdn-us.mitiendanube.com/stores/004/136/519/products/0001-bf058251-f-4360131415b6ac668917229779940163-1024-1024.webp"},
+      {code: "BF0584-56E", size: "39MM", movement: "Analogo Quartz", waterRes: "50m", tags: "analogo,caballero", image: "https://acdn-us.mitiendanube.com/stores/004/136/519/products/0125-bf058456-e-1f5e38313e62efe8df17229781323922-1024-1024.webp"},
+      {code: "BI5054-53L", size: "42MM", movement: "Analogo Quartz", waterRes: "100m", tags: "analogo,caballero", image: "https://acdn-us.mitiendanube.com/stores/004/136/519/products/0054-bi505453-l-e7e9b188464cc5c03c17229780534700-1024-1024.webp"},
+      {code: "B15055-51E", size: "42MM", movement: "Analogo Quartz", waterRes: "100m", tags: "analogo,caballero", image: "https://citizenwatch.widen.net/content/pmsy4bcp1q/png/Cuarzo.png?u=41zuoe&width=1600&height=1600&quality=80&crop=false&keep=c&color=FFFFFF00"}
+    ];
+
+    // Función para cargar imágenes (con fallback a placeholder si no existe)
+    function loadWatchImage(imageUrl, code) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(imageUrl);
+        img.onerror = () => {
+          // Si la imagen no existe, usar placeholder con el código
+          const baseUrl = "https://placehold.co/400x300/f0f9ff/0ea5e9";
+          const text = encodeURIComponent(code);
+          resolve(`${baseUrl}?text=${text}&font=monospace`);
+        };
+        img.src = imageUrl;
+      });
+    }
+
+    // Función para renderizar las tarjetas de relojes
+    async function renderWatchCards(watches) {
+      const catalogGrid = document.getElementById('catalogoGrid');
+      const emptyState = document.getElementById('emptyState');
+      
+      catalogGrid.innerHTML = '';
+      
+      if (watches.length === 0) {
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      
+      emptyState.classList.add('hidden');
+      
+      for (const watch of watches) {
+        const card = document.createElement('article');
+        card.className = 'card animate__animated animate__fadeIn';
+        card.setAttribute('data-tags', watch.tags);
+        
+        // Cargar imagen con fallback
+        const imageUrl = await loadWatchImage(watch.image, watch.code);
+        
+        card.innerHTML = `
+          <a href="#${watch.code}" class="block group" aria-label="Ver detalles ${watch.code}">
+            <div class="card-img">
+              <img src="${imageUrl}" alt="${watch.code}" loading="lazy" class="lazy" onload="this.classList.add('loaded')">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">${watch.code}</h3>
+              <div class="card-meta">
+                <span>${watch.size}</span>
+                <span>•</span>
+                <span>${watch.movement.includes('Eco-Drive') ? 'Eco-Drive' : 'Quartz'}</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-green-600">Resistente al agua ${watch.waterRes}</span>
+                <span class="card-tag">${watch.tags.includes('dama') ? 'Dama' : 'Caballero'}</span>
+              </div>
+              <span class="card-cta">
+                Ver detalles
+                <i class="bi bi-arrow-right-short transition-all"></i>
+              </span>
+            </div>
+          </a>
+        `;
+        
+        catalogGrid.appendChild(card);
+      }
+      
+      // Actualizar contador
+      document.getElementById('totalItems').textContent = `Mostrando ${watches.length} modelo${watches.length !== 1 ? 's' : ''}`;
+    }
+
+    // Inicializar con todos los relojes
+    renderWatchCards(watchData);
+
+    // Navegación móvil mejorada
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    function openMobileMenu() {
+      mobileMenu.style.display = 'block';
+      setTimeout(() => {
+        mobileMenu.classList.add('open');
+      }, 10);
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      setTimeout(() => {
+        mobileMenu.style.display = 'none';
+      }, 300);
+      document.body.style.overflow = '';
+    }
+    
+    menuBtn.addEventListener('click', openMobileMenu);
+    closeMenuBtn.addEventListener('click', closeMobileMenu);
+    
+    // Cerrar menú al hacer clic fuera
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) {
+        closeMobileMenu();
+      }
+    });
+
+    // Filtros catálogo
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        let filteredWatches;
+        if (filter === 'all') {
+          filteredWatches = watchData;
+        } else if (filter === 'dama' || filter === 'caballero') {
+          filteredWatches = watchData.filter(watch => watch.tags.includes(filter));
+        } else {
+          filteredWatches = watchData.filter(watch => watch.tags.includes(filter));
+        }
+        
+        renderWatchCards(filteredWatches);
+      });
+    });
+
+    // Modal de detalle
+    const modal = document.getElementById('modelModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalCode = document.getElementById('modalCode');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalSize = document.getElementById('modalSize');
+    const modalMovement = document.getElementById('modalMovement');
+    const modalWaterRes = document.getElementById('modalWaterRes');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalTag = document.getElementById('modalTag');
+    const whatsappLink = document.getElementById('whatsappLink');
+
+    document.addEventListener('click', async (e) => {
+      if (e.target.closest('.card a')) {
+        e.preventDefault();
+        const card = e.target.closest('.card');
+        const code = card.querySelector('.card-title').textContent.trim();
+        const watch = watchData.find(w => w.code === code);
+        
+        if (watch) {
+          const imageUrl = await loadWatchImage(watch.image, watch.code);
+          modalImg.src = imageUrl;
+          modalImg.alt = watch.code;
+          modalTitle.textContent = watch.code;
+          modalCode.textContent = `Código: ${watch.code}`;
+          modalMeta.textContent = `${watch.size} · ${watch.movement}`;
+          modalSize.textContent = watch.size;
+          modalMovement.textContent = watch.movement;
+          modalWaterRes.textContent = watch.waterRes;
+          
+          // Convertir categoría a nombre legible
+          let categoryName = "";
+          if (watch.tags.includes('dama')) {
+            categoryName = "Reloj para dama";
+          } else if (watch.tags.includes('caballero')) {
+            categoryName = "Reloj para caballero";
+          } else {
+            categoryName = watch.tags;
+          }
+          
+          modalCategory.textContent = categoryName;
+          modalTag.textContent = watch.tags.includes('dama') ? 'Dama' : 'Caballero';
+          
+          // Actualizar enlace de WhatsApp con el modelo específico
+          whatsappLink.href = `https://wa.me/56977490064?text=Hola,%20estoy%20interesado%20en%20el%20modelo%20${encodeURIComponent(watch.code)}`;
+
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    });
+
+    // Cerrar modal
+    function closeModalFunc() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    closeModal.addEventListener('click', closeModalFunc);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModalFunc();
+      }
+    });
+    
+    // Cerrar con tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModalFunc();
+      }
+    });
+
+    // Lazy loading para imágenes
+    if ('loading' in HTMLImageElement.prototype) {
+      const images = document.querySelectorAll('img.lazy');
+      images.forEach(img => {
+        img.src = img.src;
+      });
+    }
+  </script>
+</body>
+</html>

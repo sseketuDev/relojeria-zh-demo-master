@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- META BÁSICO -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Relojería ZH | Catálogo Seiko</title>
+  <meta name="description" content="Catálogo completo de relojes Seiko en Relojería ZH. Modelos deportivos, de buceo y elegantes.">
+  <link rel="canonical" href="https://tusitio.cl/seiko" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Relojería ZH | Catálogo Seiko" />
+  <meta property="og:description" content="Catálogo completo de relojes Seiko. Encuentra tu modelo ideal en Relojería ZH." />
+  <meta property="og:image" content="https://tusitio.cl/img/logo-pro.png" />
+  <meta property="og:url" content="https://tusitio.cl/seiko" />
+
+  <!-- JSON-LD: Negocio local + algunos modelos (catálogo) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"JewelryStore",
+    "name":"Relojería ZH - Catálogo Seiko",
+    "image":"https://tusitio.cl/img/logo-pro.png",
+    "url":"https://tusitio.cl/seiko",
+    "address":{"@type":"PostalAddress","addressLocality":"San Felipe","addressRegion":"Valparaíso","addressCountry":"CL"},
+    "geo":{"@type":"GeoCoordinates","latitude":-32.7495647,"longitude":-70.727704},
+    "sameAs":[]
+  }
+  </script>
+
+  <!-- FUENTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Animate.css (animaciones tipo "bootstrap vibes") -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Swiper (Carrusel) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+
+  <!-- CSS propio -->
+  <style>
+    :root {
+      --primary: #000000;
+      --primary-light: #fee2e2;
+      --secondary: #1e293b;
+      --accent: #f59e0b;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    
+    .card {
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .card-img {
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .card-img img {
+      max-height: 85%;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.5s ease;
+    }
+    
+    .card:hover .card-img img {
+      transform: scale(1.05);
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+    }
+    
+    .card-title {
+      font-weight: 600;
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+      color: var(--secondary);
+    }
+    
+    .card-meta {
+      color: #64748b;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .card-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+    
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 1rem;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 0.2s ease;
+    }
+    
+    .card-cta:hover {
+      gap: 0.5rem;
+    }
+    
+    .filter-btn {
+      transition: all 0.2s ease;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .filter-btn.active {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 4px 6px -1px rgba(185, 28, 28, 0.1), 0 2px 4px -1px rgba(185, 28, 28, 0.06);
+    }
+    
+    .watch-code {
+      color: #64748b;
+      font-size: 0.875rem;
+      font-family: monospace;
+    }
+    
+    /* Mejoras para móviles */
+    @media (max-width: 640px) {
+      .card-img {
+        height: 200px;
+      }
+      
+      .card-body {
+        padding: 1.25rem;
+      }
+      
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+      }
+    }
+    
+    /* MENÚ MÓVIL CORREGIDO */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 50;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+    
+    .mobile-nav.open {
+      display: block;
+      opacity: 1;
+    }
+    
+    .mobile-nav-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 80%;
+      max-width: 20rem;
+      background: white;
+      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+    }
+    
+    .mobile-nav.open .mobile-nav-content {
+      transform: translateX(0);
+    }
+    
+    /* Mejora para el modal en móviles */
+    @media (max-width: 768px) {
+      #modelModal .grid {
+        grid-template-columns: 1fr !important;
+      }
+      
+      #modelModal .aspect-square {
+        aspect-ratio: 1/1;
+        height: auto;
+      }
+    }
+    
+    /* Efecto de carga suave para imágenes */
+    .card-img img {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .card-img img.loaded {
+      opacity: 1;
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logo pro.png" />
+</head>
+<body class="text-slate-800 bg-slate-50 selection:bg-yellow-300 selection:text-black">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="Inicio Relojería ZH">
+        <img src="img/logo zhpro.jpg" alt="Logo Relojería ZH" class="h-12 w-12 rounded-full border-2 border-yellow-400 shadow-md object-cover"/>
+        <span class="text-2xl sm:text-3xl font-bold tracking-wide text-yellow-600 group-hover:text-yellow-500 transition-colors">
+          Relojería ZH
+        </span>
+      </a>
+      
+      <nav class="hidden md:flex items-center gap-8 font-medium">
+        <a href="index.html#inicio" class="hover:text-yellow-600 transition-colors">Inicio</a>
+        <a href="index.html#catalogo" class="hover:text-yellow-600 transition-colors">Catálogo</a>
+        <a href="index.html#colecciones" class="hover:text-yellow-600 transition-colors">Colecciones</a>
+        <a href="index.html#ubicacion" class="hover:text-yellow-600 transition-colors">Ubicación</a>
+        <a href="index.html#contacto" class="hover:text-yellow-600 transition-colors">Contacto</a>
+      </nav>
+      
+      <button id="menuBtn" class="md:hidden text-2xl p-2 rounded-lg hover:bg-slate-100 transition-colors" aria-label="Abrir menú">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- MENÚ MÓVIL CORREGIDO (SOLO UNO) -->
+  <div id="mobileMenu" class="mobile-nav">
+    <div class="mobile-nav-content">
+      <div class="p-5 border-b border-slate-100 flex justify-between items-center">
+        <span class="text-lg font-semibold text-slate-800">Menú</span>
+        <button id="closeMenuBtn" class="text-2xl p-1 rounded-lg hover:bg-slate-100 transition-colors" aria-label="Cerrar menú">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <nav class="p-5 flex flex-col gap-1">
+        <a href="index.html#inicio" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Inicio</a>
+        <a href="index.html#catalogo" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Catálogo</a>
+        <a href="index.html#colecciones" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Colecciones</a>
+        <a href="index.html#ubicacion" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Ubicación</a>
+        <a href="index.html#contacto" class="py-3 px-4 rounded-lg hover:bg-slate-100 text-slate-700 hover:text-yellow-600 transition-colors font-medium" onclick="closeMobileMenu()">Contacto</a>
+      </nav>
+    </div>
+  </div>
+  <main>
+    <!-- HERO SECTION -->
+    <section class="bg-gradient-to-br from-red-50 via-white to-pink-50 py-16 md:py-20">
+      <div class="max-w-4xl mx-auto px-4 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-black-800">Catálogo Seiko</h1>
+        <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-8 leading-relaxed">Descubre nuestra exclusiva selección de relojes Seiko. Modelos deportivos, de buceo y elegantes de la reconocida marca japonesa.</p>
+        <div class="flex justify-center">
+          <div class="w-16 h-1 bg-red-600 rounded-full"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLECCIONES / FILTROS -->
+    <section id="colecciones" class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Filtrar por Categoría</h2>
+        <div class="text-sm text-slate-500" id="totalItems">Mostrando todos los modelos</div>
+      </div>
+      <!-- Filtros mejorados -->
+      <div class="flex flex-wrap gap-3 mb-10">
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium active" data-filter="all">
+          <i class="bi bi-grid-fill mr-2"></i>Todos
+        </button>
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium" data-filter="deportivo">
+          <i class="bi bi-lightning-fill mr-2"></i>Deportivo
+        </button>
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium" data-filter="buceo">
+          <i class="bi bi-droplet-fill mr-2"></i>Buceo
+        </button>
+        <button class="filter-btn px-5 py-2.5 rounded-full bg-white text-slate-700 font-medium" data-filter="elegante">
+          <i class="bi bi-star-fill mr-2"></i>Elegante
+        </button>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE MODELOS (GRID) -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-4 lg:px-8 pb-20">
+      <div id="catalogoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+        
+        <!-- Los relojes se insertarán aquí mediante JavaScript -->
+        
+      </div>
+      
+      <!-- Estado vacío (oculto inicialmente) -->
+      <div id="emptyState" class="hidden text-center py-16">
+        <div class="max-w-md mx-auto">
+          <div class="text-6xl text-slate-300 mb-4">🕐</div>
+          <h3 class="text-xl font-medium text-slate-500 mb-2">No encontramos modelos</h3>
+          <p class="text-slate-400">Prueba con otro filtro para ver más relojes</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL DETALLE MODELO MEJORADO -->
+    <div id="modelModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+      <div class="relative bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden animate__animated animate__fadeInUp overflow-y-auto">
+        <button id="closeModal" class="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-slate-100 text-slate-600 transition-colors" aria-label="Cerrar detalle">
+          <i class="bi bi-x-lg text-xl"></i>
+        </button>
+        <div class="grid md:grid-cols-2">
+          <div class="aspect-square bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-8">
+            <img id="modalImg" src="" alt="Imagen del modelo" class="max-h-[320px] object-contain" loading="lazy">
+          </div>
+          <div class="p-6 md:p-8">
+            <div class="flex justify-between items-start mb-4">
+              <h3 id="modalTitle" class="text-2xl md:text-3xl font-bold text-slate-900">Modelo</h3>
+              <span id="modalTag" class="card-tag text-xs"></span>
+            </div>
+            <p id="modalCode" class="watch-code mb-4">Código: </p>
+            <p id="modalMeta" class="text-slate-600 mb-6">Especificaciones</p>
+            <ul class="space-y-3 text-sm mb-8">
+              <li class="flex items-center"><i class="bi bi-watch mr-3 text-red-500"></i> <span class="text-slate-600">Tamaño:</span> <span id="modalSize" class="ml-2 font-medium text-slate-900"></span></li>
+              <li class="flex items-center"><i class="bi bi-person mr-3 text-red-500"></i> <span class="text-slate-600">Género:</span> <span id="modalGender" class="ml-2 font-medium text-slate-900"></span></li>
+              <li class="flex items-center"><i class="bi bi-tag mr-3 text-red-500"></i> <span class="text-slate-600">Categoría:</span> <span id="modalCategory" class="ml-2 font-medium text-slate-900"></span></li>
+            </ul>
+            <div class="pt-6 border-t border-slate-100">
+              <p class="text-sm text-slate-500 mb-4">¿Te interesa este modelo?</p>
+              <a href="https://wa.me/56977490064?text=Hola,%20estoy%20interesado%20en%20el%20modelo%20" 
+                 id="whatsappLink" 
+                 target="_blank" 
+                 rel="noopener"
+                 class="inline-flex items-center px-5 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors shadow-md hover:shadow-lg">
+                <i class="bi bi-whatsapp mr-2 text-lg"></i> Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+ <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 text-center text-sm text-slate-500">
+      © 2025 Relojería ZH — Catálogo informativo. Todos los derechos reservados 
+        <a href="https://github.com/sseketuDev" target="_blank">sseketu</a> & 
+  <a href="https://github.com/Hasse-coder22" target="_blank">Hassecoder22</a>.
+    </div>
+  </footer>
+
+
+  <!-- Botón flotante WhatsApp mejorado -->
+  <a href="https://wa.me/+56 9 7749 0064" target="_blank" rel="noopener"
+    class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg p-4 flex items-center justify-center transition-all hover:scale-110"
+    aria-label="Contáctanos por WhatsApp">
+    <i class="bi bi-whatsapp text-2xl"></i>
+  </a>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+  <!-- JS: menú, carrusel, filtros y modal -->
+  <script>
+    // Datos de los relojes Seiko (modelos del PDF) - Ahora con imágenes
+    const watchData = [
+      { code: "SRPD51", size: "42.5mm", gender: "Hombre", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/latin-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/14/SRPD51K1/SRPD51K1.png?mh=1200&mw=1200"},
+      {code: "SRPD53", size: "42.5MM", gender: "Hombre", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/latin-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/14/SRPD53K1/SRPD53K1.png?mh=1200&mw=1200"},
+      {code: "SRPD55", size: "42.5MM", gender: "Hombre", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/latin-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/14/SRPD55K1/SRPD55K1.png?mh=1200&mw=1200"},
+      {code: "SRPD57", size: "42.5MM", gender: "Hombre", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/latin-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/15/SRPD57K1/SRPD57K1.png?mh=1200&mw=1200"},
+      {code: "SRPD61", size: "42.5MM", gender: "Hombre", tags: "buceo", category: "Buceo", image: "https://www.seikowatches.com/latin-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/15/SRPD61K1/SRPD61K1.png?mh=1200&mw=1200"},
+      {code: "SRPD63", size: "42.5MM", gender: "Hombre", tags: "buceo", category: "Buceo", image: "https://www.seikowatches.com/latin-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/16/SRPD63K1/SRPD63K1.png?mh=1200&mw=1200"},
+      {code: "SSK025", size: "42.5MM", gender: "Hombre", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2023/11/15/21/12/SSK025K1/SSK025K1.png?mh=1200&mw=1200"},
+      {code: "SSK033", size: "42.5MM", gender: "Hombre", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2024/08/16/21/22/SSK033K1/SSK033K1.png?mh=1200&mw=1200"},
+      {code: "SSK035", size: "42.5MM", gender: "Hombre", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2024/08/16/21/22/SSK035K1/SSK035K1.png?mh=1200&mw=1200"},
+      
+      // Modelos adicionales para completar el catálogo
+      {code: "SRPE51", size: "40.0MM", gender: "Hombre", tags: "elegante", category: "Elegante", image: "https://www.seikowatches.com/latin-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/23/SRPE51K1/SRPE51K1.png?mh=1200&mw=1200"},
+      {code: "SRPE53", size: "40.0MM", gender: "Hombre", tags: "elegante", category: "Elegante", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/24/SRPE53K1/SRPE53K1.png?mh=1200&mw=1200"},
+      {code: "SRPE55", size: "40.0MM", gender: "Hombre", tags: "elegante", category: "Elegante", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/24/SRPE55K1/SRPE55K1.png?mh=1200&mw=1200"},
+      {code: "SRPE57", size: "40.0MM", gender: "Hombre", tags: "elegante", category: "Elegante", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/24/SRPE57K1/SRPE57K1.png?mh=1200&mw=1200s"},
+      {code: "SRPE61", size: "40.0MM", gender: "Hombre", tags: "elegante", category: "Elegante", image: "https://www.seikowatches.com/us-en/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/24/SRPE61K1/SRPE61K1.png?mh=1200&mw=1200"},
+      {code: "SRPE63", size: "40.0MM", gender: "Hombre", tags: "elegante", category: "Elegante", image: "https://www.seikowatches.com/middleeast-en/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/24/SRPE63K1/SRPE63K1.png?mh=1200&mw=1200"},
+      {code: "SUR397", size: "40.0mm", gender: "Hombre", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/middleeast-en/-/media/Images/Product--Image/All/Seiko/2022/02/20/06/15/SUR397P1/SUR397P1.png?mh=1200&mw=1200"},
+      {code: "SUR399", size: "40.0mm", gender: "Hombre", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/middleeast-en/-/media/Images/Product--Image/All/Seiko/2022/02/20/06/16/SUR399P1/SUR399P1.png?mh=1200&mw=1200"},
+      {code: "SUR401", size: "40.0mm", gender: "Hombre", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/middleeast-en/-/media/Images/Product--Image/All/Seiko/2022/02/20/06/16/SUR401P1/SUR401P1.png?mh=1200&mw=1200"},
+      {code: "SUR402", size: "40.0mm", gender: "Hombre", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/06/16/SUR402P1/SUR402P1.png?mh=1200&mw=1200"},
+      {code: "SUR377", size: "40.2mm", gender: "Hombre", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/06/11/SUR377P1/SUR377P1.png?mh=1200&mw=1200"},
+      {code: "SUR349", size: "29.8mm", gender: "Mujer", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/06/07/SUR349P1/SUR349P1.png?mh=1200&mw=1200"},
+      {code: "SUR379", size: "29.0mm", gender: "Mujer", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/06/12/SUR379P1/SUR379P1.png?mh=1200&mw=1200"},
+      {code: "SUR380", size: "29.0mm", gender: "Mujer", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/06/12/SUR380P1/SUR380P1.png?mh=1200&mw=1200"},
+      {code: "SUR385", size: "26.0mm", gender: "Mujer", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/middleeast-en/-/media/Images/Product--Image/All/Seiko/2022/02/20/06/13/SUR385P1/SUR385P1.png?mh=1200&mw=1200"},
+      {code: "SUR410", size: "30.0mm", gender: "Mujer", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/06/17/SUR410P1/SUR410P1.png?mh=1200&mw=1200"},
+      {code: "SUR412", size: "30.0mm", gender: "Mujer", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/06/18/SUR412P1/SUR412P1.png?mh=1200&mw=1200"},
+      {code: "SUR425", size: "29.9mm", gender: "Mujer", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2022/02/20/06/20/SUR425P1/SUR425P1.png?mh=1200&mw=1200"},
+      {code: "SUR549", size: "30.0mm", gender: "Mujer", tags: "deportivo", category: "Deportivo", image: "https://www.seikowatches.com/es-es/-/media/Images/Product--Image/All/Seiko/2023/02/24/11/46/SUR549P1/SUR549P1.png?mh=1200&mw=1200"}
+    ];
+
+    // Función para obtener la imagen del reloj
+    function getWatchImageUrl(watch) {
+      // Si el reloj tiene una imagen definida, la usamos
+      if (watch.image) {
+        return watch.image;
+      }
+      
+      // Si no, generamos un placeholder con el código
+      const baseUrl = "https://placehold.co/400x300/f8fafc/9ca3af";
+      const text = encodeURIComponent(watch.code);
+      return `${baseUrl}?text=${text}&font=monospace`;
+    }
+
+    // Función para renderizar las tarjetas de relojes
+    function renderWatchCards(watches) {
+      const catalogGrid = document.getElementById('catalogoGrid');
+      const emptyState = document.getElementById('emptyState');
+      
+      catalogGrid.innerHTML = '';
+      
+      if (watches.length === 0) {
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      
+      emptyState.classList.add('hidden');
+      
+      watches.forEach(watch => {
+        const card = document.createElement('article');
+        card.className = 'card animate__animated animate__fadeIn';
+        card.setAttribute('data-tags', watch.tags);
+        
+        card.innerHTML = `
+          <a href="#${watch.code}" class="block group" aria-label="Ver detalles ${watch.code}">
+            <div class="card-img">
+              <img src="${getWatchImageUrl(watch)}" alt="${watch.code}" loading="lazy" class="lazy" onload="this.classList.add('loaded')">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">${watch.code}</h3>
+              <div class="card-meta">
+                <span>${watch.size}</span>
+                <span>•</span>
+                <span>${watch.gender}</span>
+              </div>
+              <div class="card-tag">${watch.category}</div>
+              <span class="card-cta">
+                Ver detalles
+                <i class="bi bi-arrow-right-short transition-all"></i>
+              </span>
+            </div>
+          </a>
+        `;
+        
+        catalogGrid.appendChild(card);
+      });
+      
+      // Actualizar contador
+      document.getElementById('totalItems').textContent = `Mostrando ${watches.length} modelo${watches.length !== 1 ? 's' : ''}`;
+    }
+
+    // Inicializar con todos los relojes
+    renderWatchCards(watchData);
+
+    // Navegación móvil mejorada
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    function openMobileMenu() {
+      mobileMenu.style.display = 'block';
+      setTimeout(() => {
+        mobileMenu.classList.add('open');
+      }, 10);
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      setTimeout(() => {
+        mobileMenu.style.display = 'none';
+      }, 300);
+      document.body.style.overflow = '';
+    }
+    
+    menuBtn.addEventListener('click', openMobileMenu);
+    closeMenuBtn.addEventListener('click', closeMobileMenu);
+    
+    // Cerrar menú al hacer clic fuera
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) {
+        closeMobileMenu();
+      }
+    });
+
+    // Filtros catálogo
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        let filteredWatches;
+        if (filter === 'all') {
+          filteredWatches = watchData;
+        } else {
+          filteredWatches = watchData.filter(watch => watch.tags.includes(filter));
+        }
+        
+        renderWatchCards(filteredWatches);
+      });
+    });
+
+    // Modal de detalle
+    const modal = document.getElementById('modelModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalCode = document.getElementById('modalCode');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalSize = document.getElementById('modalSize');
+    const modalGender = document.getElementById('modalGender');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalTag = document.getElementById('modalTag');
+    const whatsappLink = document.getElementById('whatsappLink');
+
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.card a')) {
+        e.preventDefault();
+        const card = e.target.closest('.card');
+        const code = card.querySelector('.card-title').textContent.trim();
+        const watch = watchData.find(w => w.code === code);
+        
+        if (watch) {
+          modalImg.src = getWatchImageUrl(watch);
+          modalImg.alt = watch.code;
+          modalTitle.textContent = watch.code;
+          modalCode.textContent = `Código: ${watch.code}`;
+          modalMeta.textContent = `${watch.size} · ${watch.gender}`;
+          modalSize.textContent = watch.size;
+          modalGender.textContent = watch.gender;
+          modalCategory.textContent = watch.category;
+          modalTag.textContent = watch.category;
+          
+          // Actualizar enlace de WhatsApp con el modelo específico
+          whatsappLink.href = `https://wa.me/56977490064?text=Hola,%20estoy%20interesado%20en%20el%20modelo%20${encodeURIComponent(watch.code)}`;
+
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    });
+
+    // Cerrar modal
+    function closeModalFunc() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    closeModal.addEventListener('click', closeModalFunc);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModalFunc();
+      }
+    });
+    
+    // Cerrar con tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModalFunc();
+      }
+    });
+
+    // Lazy loading para imágenes
+    if ('loading' in HTMLImageElement.prototype) {
+      const images = document.querySelectorAll('img.lazy');
+      images.forEach(img => {
+        img.src = img.src;
+      });
+    }
+  </script>
+</body>
+</html>
