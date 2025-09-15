@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Relojería ZH | Alianzas de Compromiso Especiales</title>
-  <meta name="description" content="Alianzas de compromiso especiales en oro. Diseños exclusivos con la mejor calidad.">
+  <title>Relojería ZH | Joyería Fina - Argollas de Oro y Alianzas</title>
+  <meta name="description" content="Finas argollas de oro amarillo. Alianzas de compromiso especiales en oro. Diseños exclusivos con la mejor calidad en Joyería y Relojería ZH.">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="img/logo zhpro.jpg" />
   
   <!-- Fuentes y estilos -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
 
@@ -18,16 +18,25 @@
     :root {
       --gold: #fbbf24;
       --light-gold: #fef3c7;
+      --dark-gold: #b45309;
+      --silver: #c0c0c0;
+      --light-silver: #f3f4f6;
+      --dark-silver: #6b7280;
     }
     
     body {
       font-family: 'Poppins', sans-serif;
       background: #f8fafc;
       min-height: 100vh;
+      scroll-behavior: smooth;
     }
     
     .gold-gradient {
       background: linear-gradient(135deg, var(--light-gold) 0%, var(--gold) 100%);
+    }
+    
+    .silver-gradient {
+      background: linear-gradient(135deg, var(--light-silver) 0%, var(--silver) 100%);
     }
     
     .shine-effect {
@@ -155,21 +164,6 @@
       transition: transform 0.5s ease;
     }
     
-    /* Contador de visitas */
-    .visitor-counter {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(251, 191, 36, 0.9);
-      color: white;
-      padding: 8px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 600;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 40;
-    }
-    
     /* Efecto de confeti */
     .confetti {
       position: fixed;
@@ -180,49 +174,321 @@
       z-index: 100;
       pointer-events: none;
     }
+    
+    /* Nuevos estilos para mejoras */
+    .premium-card {
+      transition: all 0.3s ease;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .premium-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+    }
+    
+    .gold-text {
+      background: linear-gradient(135deg, #fbbf24 0%, #b45309 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .silver-text {
+      background: linear-gradient(135deg, #c0c0c0 0%, #6b7280 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .diamond-pattern {
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.2) 2%, transparent 2.5%),
+        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.2) 2%, transparent 2.5%);
+      background-size: 30px 30px;
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 40;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      background: var(--dark-gold);
+    }
+    
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--gold);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 10;
+    }
+    
+    .testimonial-card {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      position: relative;
+      border: 1px solid #fef3c7;
+    }
+    
+    .testimonial-card::before {
+      content: """;
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 60px;
+      color: #fef3c7;
+      font-family: Arial;
+      line-height: 1;
+    }
+    
+    /* Estilos para el carrusel */
+    .carousel-container {
+      position: relative;
+      max-width: 900px;
+      margin: 2rem auto;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 15px 30px -5px rgba(251, 191, 36, 0.2);
+      border: 2px solid var(--gold);
+    }
+    
+    .carousel-slide {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    
+    .carousel-slide img {
+      width: 100%;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(251, 191, 36, 0.7);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+    
+    .carousel-btn:hover {
+      background: rgba(251, 191, 36, 0.9);
+    }
+    
+    .carousel-btn.prev {
+      left: 15px;
+    }
+    
+    .carousel-btn.next {
+      right: 15px;
+    }
+    
+    .carousel-dots {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+    
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .carousel-dot.active {
+      background: var(--gold);
+      transform: scale(1.2);
+    }
   </style>
 </head>
 <body class="text-gray-900 bg-white selection:bg-yellow-300 selection:text-black">
 
-  <!-- HEADER -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
+  <!-- HEADER MEJORADO -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3 group" aria-label="Inicio Relojería ZH">
-        <img src="img/logo zhpro.jpg" alt="Logo Relojería ZH" class="h-12 w-12 rounded-full border border-yellow-400 shadow object-cover"/>
-        <span class="text-2xl sm:text-3xl font-bold tracking-wide text-yellow-500 group-hover:text-yellow-400 transition">
+        <div class="relative">
+          <img src="img/logo zhpro.jpg" alt="Logo Relojería ZH" class="h-14 w-14 rounded-full border-2 border-yellow-400 shadow-md object-cover"/>
+          <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-yellow-500 rounded-full border-2 border-white"></div>
+        </div>
+        <span class="text-2xl sm:text-3xl font-bold tracking-wide gold-text group-hover:opacity-90 transition">
           Relojería ZH
         </span>
       </a>
       <nav class="hidden md:flex items-center gap-8 font-medium">
-        <a href="index.html#inicio" class="hover:text-yellow-500">Inicio</a>
-        <a href="index.html#catalogo" class="hover:text-yellow-500">Catálogo</a>
-        <a href="index.html#colecciones" class="hover:text-yellow-500">Colecciones</a>
-        <a href="index.html#ubicacion" class="hover:text-yellow-500">Ubicación</a>
-        <a href="index.html#contacto" class="hover:text-yellow-500">Contacto</a>
+        <a href="index.html#inicio" class="hover:gold-text transition-all">Inicio</a>
+        <a href="index.html#catalogo" class="hover:gold-text transition-all">Catálogo</a>
+        <a href="index.html#colecciones" class="hover:gold-text transition-all">Colecciones</a>
+        <a href="index.html#ubicacion" class="hover:gold-text transition-all">Ubicación</a>
+        <a href="index.html#contacto" class="hover:gold-text transition-all">Contacto</a>
       </nav>
-      <button id="menuBtn" class="md:hidden text-3xl" aria-label="Abrir menú"><i class="bi bi-list"></i></button>
+      <button id="menuBtn" class="md:hidden text-3xl text-amber-700" aria-label="Abrir menú"><i class="bi bi-list"></i></button>
     </div>
     <!-- Menú móvil -->
-    <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100">
-      <nav class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex flex-col gap-3">
-        <a href="index.html#inicio" class="py-2 hover:text-yellow-500">Inicio</a>
-        <a href="index.html#catalogo" class="py-2 hover:text-yellow-500">Catálogo</a>
-        <a href="index.html#colecciones" class="py-2 hover:text-yellow-500">Colecciones</a>
-        <a href="index.html#ubicacion" class="py-2 hover:text-yellow-500">Ubicación</a>
-        <a href="index.html#contacto" class="py-2 hover:text-yellow-500">Contacto</a>
+    <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 bg-white/95 backdrop-blur-md">
+      <nav class="max-w-7xl mx-auto px-4 lg:px-8 py-4 flex flex-col gap-3">
+        <a href="index.html#inicio" class="py-2 px-4 rounded-lg hover:bg-amber-50 hover:text-amber-700 transition-all">Inicio</a>
+        <a href="index.html#catalogo" class="py-2 px-4 rounded-lg hover:bg-amber-50 hover:text-amber-700 transition-all">Catálogo</a>
+        <a href="index.html#colecciones" class="py-2 px-4 rounded-lg hover:bg-amber-50 hover:text-amber-700 transition-all">Colecciones</a>
+        <a href="index.html#ubicacion" class="py-2 px-4 rounded-lg hover:bg-amber-50 hover:text-amber-700 transition-all">Ubicación</a>
+        <a href="index.html#contacto" class="py-2 px-4 rounded-lg hover:bg-amber-50 hover:text-amber-700 transition-all">Contacto</a>
       </nav>
     </div>
   </header>
 
   <main class="pb-16">
-    <!-- HERO SECTION -->
-    <section class="py-16 bg-gradient-to-r from-yellow-50 to-amber-50 relative overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-amber-700 floating">
-          Alianzas de Compromiso
+    <!-- HERO SECTION MEJORADO -->
+    <section class="py-16 bg-gradient-to-br from-amber-50 via-white to-amber-50 relative overflow-hidden diamond-pattern">
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+      <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-amber-700 floating">
+          <span class="gold-text">Joyería Fina</span> de Excelencia
         </h1>
-        <p class="text-lg text-amber-600 max-w-3xl mx-auto font-semibold">
-          Descubre nuestras exclusivas alianzas de compromiso en oro, con diseños únicos y la mejor calidad.
+        <p class="text-lg md:text-xl text-amber-600 max-w-3xl mx-auto font-semibold mb-8">
+          Descubre nuestras exclusivas colecciones de joyería fina, con diseños únicos y la mejor calidad.
+        </p>
+        
+        <div class="mt-10 flex justify-center">
+          <div class="w-24 h-1 gold-gradient rounded-full"></div>
+          <div class="w-8 h-1 mx-2 bg-amber-400 rounded-full"></div>
+          <div class="w-24 h-1 gold-gradient rounded-full"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE FINAS ARGOLLAS DE ORO AMARILLO (PRIMERA SECCIÓN) -->
+    <section class="py-16 bg-gradient-to-r from-yellow-50 to-yellow-100 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-yellow-900 floating">
+          Finas Argollas de Oro Amarillo
+        </h2>
+        <p class="text-lg text-yellow-800 max-w-3xl mx-auto font-medium">
+          Elegancia y distinción en cada detalle. Encuéntralas exclusivamente en Joyería y Relojería ZH.
+        </p>
+        
+        <div class="mt-10 flex justify-center">
+          <div class="w-20 h-1 bg-yellow-500 rounded-full"></div>
+          <div class="w-6 h-1 mx-2 bg-yellow-400 rounded-full"></div>
+          <div class="w-20 h-1 bg-yellow-500 rounded-full"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARRUSEL ARGOLLAS DE ORO -->
+    <section class="max-w-7xl mx-auto px-4 py-8 relative">
+      <div class="carousel-container" id="goldRingsCarousel">
+        <span class="product-badge" style="background: #f59e0b;">Oro Amarillo</span>
+        <div class="particles-container" id="goldRingsParticles"></div>
+        <div class="shine-overlay"></div>
+        
+        <div class="carousel-slide">
+          <img src="img/argollas2.jpg" alt="Argollas de oro amarillo diseño 2 - Joyería y Relojería ZH">
+          <img src="img/argollas3.jpg" alt="Argollas de oro amarillo diseño 3 - Joyería y Relojería ZH">
+          <img src="img/argollas4.jpg" alt="Argollas de oro amarillo diseño 4 - Joyería y Relojería ZH">
+        </div>
+        
+        <button class="carousel-btn prev">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+        
+        <div class="carousel-dots">
+          <div class="carousel-dot active" data-index="0"></div>
+          <div class="carousel-dot" data-index="1"></div>
+          <div class="carousel-dot" data-index="2"></div>
+          <div class="carousel-dot" data-index="3"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider max-w-7xl mx-auto"></div>
+
+    <!-- BOTÓN DE WHATSAPP ARGOLLAS ORO -->
+    <section class="max-w-7xl mx-auto px-4 py-12 text-center">
+      <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl mx-auto border border-yellow-100 relative overflow-hidden diamond-pattern">
+        <div class="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-yellow-200 opacity-10"></div>
+        <div class="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-yellow-200 opacity-10"></div>
+        
+        <h2 class="text-2xl font-bold mb-6 text-yellow-900">
+          ¿Te interesan nuestras argollas de oro amarillo?
+        </h2>
+        <p class="text-yellow-800 mb-8 font-medium">
+          Contáctanos por WhatsApp para obtener más información, precios y disponibilidad.
+        </p>
+        
+        <div class="relative inline-block">
+          <a href="https://wa.me/56912345678?text=Hola,%20estoy%20interesado%20en%20las%20argollas%20de%20oro%20amarillo" 
+             target="_blank" 
+             class="whatsapp-btn relative inline-flex items-center px-8 py-4 text-white rounded-xl text-lg font-semibold transition-all transform hover:scale-105"
+             id="whatsappBtn3">
+            <i class="bi bi-whatsapp mr-3 text-2xl"></i> Consultar por WhatsApp
+          </a>
+        </div>
+        
+        <div class="mt-6 text-sm text-yellow-700 font-medium">
+          <p>Horario de atención: Lunes a Sábado de 9:00 a 20:00 hrs</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE ALIANZAS DE COMPROMISO -->
+    <section class="py-16 bg-gradient-to-r from-amber-50 to-amber-100 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-amber-800 floating">
+          Alianzas de Compromiso
+        </h2>
+        <p class="text-lg text-amber-700 max-w-3xl mx-auto font-medium">
+          Símbolo de amor eterno, elaboradas con los más altos estándares de calidad.
         </p>
         
         <div class="mt-10 flex justify-center">
@@ -236,6 +502,7 @@
     <!-- IMAGEN CENTRAL CON EFECTOS -->
     <section class="max-w-7xl mx-auto px-4 py-8 relative">
       <div class="image-container" id="goldImage">
+        <span class="product-badge">Oro 18K</span>
         <div class="particles-container" id="goldParticles"></div>
         <div class="shine-overlay"></div>
         <img src="img/alianzas-compromiso.png" alt="Catálogo de Alianzas de Compromiso Especiales" class="zoom-on-hover">
@@ -246,39 +513,39 @@
 
     <!-- BOTÓN DE WHATSAPP -->
     <section class="max-w-7xl mx-auto px-4 py-12 text-center">
-      <div class="bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto border border-amber-100 relative overflow-hidden">
-        <div class="absolute -top-16 -right-16 w-32 h-32 rounded-full gold-gradient opacity-20"></div>
-        <div class="absolute -bottom-16 -left-16 w-32 h-32 rounded-full gold-gradient opacity-20"></div>
+      <div class="bg-white rounded-2xl shadow-xl p-8 max-w-2xl mx-auto border border-amber-100 relative overflow-hidden diamond-pattern">
+        <div class="absolute -top-20 -right-20 w-40 h-40 rounded-full gold-gradient opacity-10"></div>
+        <div class="absolute -bottom-20 -left-20 w-40 h-40 rounded-full gold-gradient opacity-10"></div>
         
-        <h2 class="text-2xl font-bold mb-6 text-amber-700">
+        <h2 class="text-2xl font-bold mb-6 text-amber-800">
           ¿Te interesa alguna de nuestras alianzas?
         </h2>
-        <p class="text-amber-600 mb-8">
+        <p class="text-amber-700 mb-8 font-medium">
           Contáctanos por WhatsApp para obtener más información, precios y disponibilidad de cualquiera de nuestros modelos.
         </p>
         
         <div class="relative inline-block">
           <a href="https://wa.me/56912345678?text=Hola,%20estoy%20interesado%20en%20las%20alianzas%20de%20compromiso%20especiales" 
              target="_blank" 
-             class="whatsapp-btn relative inline-flex items-center px-6 py-3 text-white rounded-lg text-lg font-semibold"
+             class="whatsapp-btn relative inline-flex items-center px-8 py-4 text-white rounded-xl text-lg font-semibold transition-all transform hover:scale-105"
              id="whatsappBtn1">
-            <i class="bi bi-whatsapp mr-2 text-xl"></i> Consultar por WhatsApp
+            <i class="bi bi-whatsapp mr-3 text-2xl"></i> Consultar por WhatsApp
           </a>
         </div>
         
-        <div class="mt-6 text-sm text-gray-500">
+        <div class="mt-6 text-sm text-amber-600 font-medium">
           <p>Horario de atención: Lunes a Sábado de 9:00 a 20:00 hrs</p>
         </div>
       </div>
     </section>
 
     <!-- SECCIÓN DE ANILLOS DE PLATA -->
-    <section class="py-16 bg-gradient-to-r from-gray-50 to-gray-100 relative overflow-hidden mt-12">
+    <section class="py-16 bg-gradient-to-r from-gray-50 to-gray-100 relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-700 floating">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800 floating">
           Anillos de Plata
-        </h1>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto font-semibold">
+        </h2>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto font-medium">
           Descubre nuestra exclusiva colección de anillos de plata, con diseños elegantes y modernos.
         </p>
         
@@ -293,6 +560,7 @@
     <!-- IMAGEN CENTRAL PLATA CON EFECTOS -->
     <section class="max-w-7xl mx-auto px-4 py-8 relative">
       <div class="image-container" style="border: 2px solid #c0c0c0; box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);" id="silverImage">
+        <span class="product-badge" style="background: #9ca3af;">Plata 925</span>
         <div class="particles-container" id="silverParticles"></div>
         <div class="shine-overlay"></div>
         <img src="img/Screenshot 2025-08-29 204025.png" alt="Catálogo de Anillos de Plata" class="zoom-on-hover">
@@ -303,47 +571,55 @@
 
     <!-- BOTÓN DE WHATSAPP PLATA -->
     <section class="max-w-7xl mx-auto px-4 py-12 text-center">
-      <div class="bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto border border-gray-200 relative overflow-hidden">
-        <div class="absolute -top-16 -right-16 w-32 h-32 rounded-full bg-gray-200 opacity-20"></div>
-        <div class="absolute -bottom-16 -left-16 w-32 h-32 rounded-full bg-gray-200 opacity-20"></div>
-        
-        <h2 class="text-2xl font-bold mb-6 text-gray-700">
-          ¿Te interesa algún anillo de plata?
-        </h2>
-        <p class="text-gray-600 mb-8">
-          Contáctanos por WhatsApp para obtener más información, precios y disponibilidad de cualquiera de nuestros modelos.
-        </p>
-        
-        <div class="relative inline-block">
-          <a href="https://wa.me/56912345678?text=Hola,%20estoy%20interesado%20en%20los%20anillos%20de%20plata" 
-             target="_blank" 
-             class="whatsapp-btn relative inline-flex items-center px-6 py-3 text-white rounded-lg text-lg font-semibold"
-             id="whatsappBtn2">
-            <i class="bi bi-whatsapp mr-2 text-xl"></i> Consultar por WhatsApp
-          </a>
-        </div>
-        
-        <div class="mt-6 text-sm text-gray-500">
-          <p>Horario de atención: Lunes a Sábado de 9:00 a 20:00 hrs</p>
-        </div>
-      </div>
-    </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-gray-200 bg-white py-8 mt-12">
-    <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">
-      <div class="flex justify-center space-x-6 mb-4">
-        <a href="#" class="text-gray-600 hover:text-yellow-500 transition-colors"><i class="bi bi-facebook text-xl"></i></a>
-        <a href="#" class="text-gray-600 hover:text-yellow-500 transition-colors"><i class="bi bi-instagram text-xl"></i></a>
-        <a href="#" class="text-gray-600 hover:text-yellow-500 transition-colors"><i class="bi bi-tiktok text-xl"></i></a>
+  <!-- FOOTER MEJORADO -->
+  <footer class="border-t border-gray-200 bg-white py-12 mt-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-lg font-semibold text-amber-800 mb-4">Relojería ZH</h3>
+          <p class="text-gray-600 mb-4">Tu joyería de confianza con los mejores diseños y calidad garantizada.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-600 hover:text-amber-600 transition-colors"><i class="bi bi-facebook text-xl"></i></a>
+            <a href="#" class="text-gray-600 hover:text-amber-600 transition-colors"><i class="bi bi-instagram text-xl"></i></a>
+            <a href="#" class="text-gray-600 hover:text-amber-600 transition-colors"><i class="bi bi-tiktok text-xl"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold text-amber-800 mb-4">Enlaces Rápidos</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html#inicio" class="text-gray-600 hover:text-amber-600 transition-colors">Inicio</a></li>
+            <li><a href="index.html#catalogo" class="text-gray-600 hover:text-amber-600 transition-colors">Catálogo</a></li>
+            <li><a href="index.html#colecciones" class="text-gray-600 hover:text-amber-600 transition-colors">Colecciones</a></li>
+            <li><a href="index.html#ubicacion" class="text-gray-600 hover:text-amber-600 transition-colors">Ubicación</a></li>
+            <li><a href="index.html#contacto" class="text-gray-600 hover:text-amber-600 transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold text-amber-800 mb-4">Contacto</h3>
+          <ul class="space-y-2">
+            <li class="flex items-center text-gray-600"><i class="bi bi-geo-alt mr-2 text-amber-600"></i> Av. Principal 123, Santiago</li>
+            <li class="flex items-center text-gray-600"><i class="bi bi-telephone mr-2 text-amber-600"></i> +56 9 1234 5678</li>
+            <li class="flex items-center text-gray-600"><i class="bi bi-envelope mr-2 text-amber-600"></i> info@relojeriazh.cl</li>
+            <li class="flex items-center text-gray-600"><i class="bi bi-clock mr-2 text-amber-600"></i> Lunes a Sábado: 9:00 - 20:00</li>
+          </ul>
+        </div>
       </div>
-      © 2025 Relojería ZH — Catálogo informativo. Todos los derechos reservados.
+      
+      <div class="border-t border-gray-100 mt-8 pt-8 text-center text-sm text-gray-500">
+        © 2025 Relojería ZH — Joyería Fina y Relojería. Todos los derechos reservados.
+      </div>
     </div>
   </footer>
 
-  
+  <!-- Botón volver arriba -->
+  <div class="back-to-top" id="backToTop">
+    <i class="bi bi-arrow-up text-xl"></i>
+  </div>
 
   <!-- JavaScript -->
   <script>
@@ -353,15 +629,7 @@
       mobileMenu.classList.toggle('hidden');
     });
 
-    // Contador de visitas
-    function updateVisitCount() {
-      let count = localStorage.getItem('pageVisits') || 0;
-      count = parseInt(count) + 1;
-      localStorage.setItem('pageVisits', count);
-      document.getElementById('visitCount').textContent = count;
-    }
-
-    // Efecto de partículas doradas
+    // Efecto de partículas
     function createParticles(containerId, color, count = 20) {
       const container = document.getElementById(containerId);
       if (!container) return;
@@ -396,7 +664,7 @@
           const x = (e.clientX - left) / width - 0.5;
           const y = (e.clientY - top) / height - 0.5;
           
-          img.style.transform = `scale(1.05) translate(${x * 10}px, ${y * 10}px)`;
+img.style.transform = `scale(1.05) translate(${x * 10}px, ${y * 10}px)`;
         });
         
         img.addEventListener('mouseleave', () => {
@@ -411,7 +679,6 @@
       if (!btn) return;
       
       btn.addEventListener('click', (e) => {
-        // No prevenir el comportamiento por defecto para que el enlace funcione
         createConfetti(e.clientX, e.clientY);
       });
     }
@@ -454,49 +721,96 @@
       }
     }
 
-    // Efecto de escritura automática para títulos
-    function initTypewriterEffect() {
-      const titles = document.querySelectorAll('h1');
+    // Botón volver arriba
+    function initBackToTop() {
+      const backToTopBtn = document.getElementById('backToTop');
       
-      titles.forEach(title => {
-        const originalText = title.textContent;
-        title.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-          if (i < originalText.length) {
-            title.textContent += originalText.charAt(i);
-            i++;
-            setTimeout(typeWriter, 50);
-          }
-        };
-        
-        // Iniciar cuando el elemento es visible
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              typeWriter();
-              observer.unobserve(entry.target);
-            }
-          });
-        });
-        
-        observer.observe(title);
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
       });
+      
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    // Carrusel de argollas de oro
+    function initGoldRingsCarousel() {
+      const carousel = document.getElementById('goldRingsCarousel');
+      if (!carousel) return;
+      
+      const slide = carousel.querySelector('.carousel-slide');
+      const images = slide.querySelectorAll('img');
+      const prevBtn = carousel.querySelector('.carousel-btn.prev');
+      const nextBtn = carousel.querySelector('.carousel-btn.next');
+      const dots = carousel.querySelectorAll('.carousel-dot');
+      
+      let currentIndex = 0;
+      const totalImages = images.length;
+      
+      // Ajustar el ancho del contenedor de diapositivas
+      slide.style.width = `${totalImages * 100}%`;
+      
+      // Ajustar el ancho de cada imagen
+      images.forEach(img => {
+        img.style.width = `${100 / totalImages}%`;
+      });
+      
+      // Función para mover el carrusel
+      function moveToIndex(index) {
+        if (index < 0) index = totalImages - 1;
+        if (index >= totalImages) index = 0;
+        
+        currentIndex = index;
+        slide.style.transform = `translateX(-${currentIndex * (100 / totalImages)}%)`;
+        
+        // Actualizar dots activos
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentIndex);
+        });
+      }
+      
+      // Event listeners para botones
+      prevBtn.addEventListener('click', () => {
+        moveToIndex(currentIndex - 1);
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        moveToIndex(currentIndex + 1);
+      });
+      
+      // Event listeners para dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          moveToIndex(index);
+        });
+      });
+      
+      // Auto slide cada 5 segundos
+      setInterval(() => {
+        moveToIndex(currentIndex + 1);
+      }, 5000);
     }
 
     // Inicializar todos los efectos cuando el documento esté listo
     document.addEventListener('DOMContentLoaded', () => {
-      updateVisitCount();
       createParticles('goldParticles', '#fbbf24', 25);
       createParticles('silverParticles', '#c0c0c0', 20);
+      createParticles('goldRingsParticles', '#fbbf24', 25);
       initImageZoom();
       createConfettiEffect('whatsappBtn1');
       createConfettiEffect('whatsappBtn2');
-      
-      // Iniciar efecto de escritura después de un breve retraso
-      setTimeout(initTypewriterEffect, 500);
+      createConfettiEffect('whatsappBtn3');
+      initBackToTop();
+      initGoldRingsCarousel();
     });
   </script>
 </body>
-</html>
+</html><!DOCTYPE html>
